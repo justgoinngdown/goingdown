@@ -197,7 +197,7 @@
             <button class="add-btn action-btn" onclick="showAddModal('organization')">添加新部门</button>
             <div id="organizationList"></div>
         </section>
-    </div>
+                </div>
 
     <!-- 模态框 -->
     <div id="editModal" class="modal">
@@ -225,9 +225,9 @@
 
         // 加载数据列表
         function loadEquipmentList() {
-            fetch('php/get_equipment.php')
-                .then(response => response.json())
-                .then(data => {
+        fetch('php/get_equipment.php')
+            .then(response => response.json())
+            .then(data => {
                     const container = document.getElementById('equipmentList');
                     if (data.success && data.data) {
                         const table = createTable(
@@ -518,7 +518,7 @@
             loadStaffList();
             loadProjectList();
             loadOrganizationList();
-        });
+            });
     </script>
 </body>
 </html> 
