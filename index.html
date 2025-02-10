@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青岛海湾化学 - 质量监督检验部</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>青岛海湾化学股份有限公司</h1>
+            <h2>质量监督检验部</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">首页</a></li>
+                    <li><a href="equipment.html">仪器设备</a></li>
+                    <li><a href="staff.html">人员信息</a></li>
+                    <li><a href="projects.html">分析检测项目</a></li>
+                    <li><a href="organization.html">组织架构</a></li>
+                    <li><a href="admin.html">管理员登录</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主体内容 -->
+    <main class="container">
+        <!-- 部门简介 -->
+        <section class="intro card">
+            <h2>部门简介</h2>
+            <p>青岛海湾化学股份有限公司质量监督检验部是公司核心部门之一，负责生产过程中的质量监控、产品检测及技术支持。我们拥有一支高素质的专业团队和先进的检测设备，确保每一项检测结果都准确可靠，为公司的产品质量保驾护航。</p>
+            <div class="image-container">
+                <img src="images/department.jpg" alt="部门图片" class="animated-image">
+            </div>
+        </section>
+
+        <!-- 数据统计 -->
+        <section class="statistics card">
+            <h3>数据统计</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h4>总设备数量</h4>
+                    <p class="stat-value">10</p>
+                </div>
+                <div class="stat-item">
+                    <h4>总人员数量</h4>
+                    <p class="stat-value">5</p>
+                </div>
+                <div class="stat-item">
+                    <h4>总项目数量</h4>
+                    <p class="stat-value">3</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务亮点 -->
+        <section class="highlights">
+            <h2>我们的亮点</h2>
+            <div class="list">
+                <div class="list-item">
+                    <h3>设备先进</h3>
+                    <p>我们配备了最新的分析仪器，确保检测精度和效率。</p>
+                </div>
+                <div class="list-item">
+                    <h3>团队专业</h3>
+                    <p>我们的技术人员均经过严格培训，具备丰富的行业经验。</p>
+                </div>
+                <div class="list-item">
+                    <h3>响应快速</h3>
+                    <p>我们能够及时的完成生产分析任务。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司 质量监督检验部</p>
+            <p>联系方式：15684706918</p>
+        </div>
+    </footer>
+
+    <script>
+        // 获取统计数据
+        fetch('php/get_stats.php')
+            .then(response => response.json())
+            .then(data => {
+                // 更新总设备数量
+                document.querySelector('.statistics .stat-item:nth-child(1) .stat-value').textContent = data.equipment;
+                // 更新总人员数量
+                document.querySelector('.statistics .stat-item:nth-child(2) .stat-value').textContent = data.staff;
+                // 更新总项目数量
+                document.querySelector('.statistics .stat-item:nth-child(3) .stat-value').textContent = data.projects;
+            });
+    </script>
+</body>
+</html> 

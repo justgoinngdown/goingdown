@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员登录</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .login-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .login-btn:hover {
+            background: #0056b3;
+        }
+        .error-message {
+            color: #dc3545;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>青岛海湾化学股份有限公司</h1>
+            <h2>质量监督检验部</h2>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="equipment.html">仪器设备</a></li>
+                    <li><a href="staff.html">人员信息</a></li>
+                    <li><a href="projects.html">分析检测项目</a></li>
+                    <li><a href="organization.html">组织架构</a></li>
+                    <li><a href="admin.html" class="active">管理员登录</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <h2 style="text-align: center; margin-bottom: 30px;">管理员登录</h2>
+        <form id="loginForm" class="login-form">
+            <div class="form-group">
+                <label for="username">用户名</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">登录</button>
+            <div id="errorMessage" class="error-message"></div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginButton = document.querySelector('.login-btn');
+            
+            // 禁用登录按钮，防止重复提交
+            loginButton.disabled = true;
+            loginButton.textContent = '登录中...';
+            errorMessage.style.display = 'none';
+            
+            // 发送登录请求
+            fetch('php/admin_login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+            })
+            .then(response => {
+                // 检查响应状态
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // 登录成功，跳转到管理面板
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    // 显示错误信息
+                    errorMessage.style.display = 'block';
+                    errorMessage.textContent = data.message || '登录失败，请检查用户名和密码';
+                    // 重置登录按钮
+                    loginButton.disabled = false;
+                    loginButton.textContent = '登录';
+                }
+            })
+            .catch(error => {
+                console.error('Login error:', error);
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = '登录请求失败，请稍后重试';
+                // 重置登录按钮
+                loginButton.disabled = false;
+                loginButton.textContent = '登录';
+            });
+        });
+    </script>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司</p>
+            <p>联系方式：15684706918</p>
+        </div>
+    </footer>
+</body>
+</html> 
