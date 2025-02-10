@@ -96,6 +96,12 @@
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('errorMessage');
+            const loginButton = document.querySelector('.login-btn');
+            
+            // 禁用登录按钮，防止重复提交
+            loginButton.disabled = true;
+            loginButton.textContent = '登录中...';
+            errorMessage.style.display = 'none';
             
             // 发送登录请求
             fetch('php/admin_login.php', {
@@ -105,7 +111,13 @@
                 },
                 body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
             })
-            .then(response => response.json())
+            .then(response => {
+                // 检查响应状态
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.success) {
                     // 登录成功，跳转到管理面板
@@ -113,12 +125,19 @@
                 } else {
                     // 显示错误信息
                     errorMessage.style.display = 'block';
-                    errorMessage.textContent = data.message;
+                    errorMessage.textContent = data.message || '登录失败，请检查用户名和密码';
+                    // 重置登录按钮
+                    loginButton.disabled = false;
+                    loginButton.textContent = '登录';
                 }
             })
             .catch(error => {
+                console.error('Login error:', error);
                 errorMessage.style.display = 'block';
                 errorMessage.textContent = '登录请求失败，请稍后重试';
+                // 重置登录按钮
+                loginButton.disabled = false;
+                loginButton.textContent = '登录';
             });
         });
     </script>
