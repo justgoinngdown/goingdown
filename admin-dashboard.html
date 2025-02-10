@@ -3,158 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>后台管理 - 青岛海湾化学</title>
+    <title>管理员后台 - 青岛海湾化学</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .logout-btn {
+            background: #dc3545;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .logout-btn:hover {
+            background: #c82333;
+        }
+        .management-section {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .section-title {
+            margin: 0 0 20px 0;
+            color: #333;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .data-table th, .data-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .data-table th {
+            background: #f8f9fa;
+        }
+        .action-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .edit-btn {
+            background: #28a745;
+            color: white;
+        }
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+        .add-btn {
+            background: #007bff;
+            color: white;
+            padding: 8px 16px;
+            margin-bottom: 20px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            margin: 50px auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-    <!-- 头部 -->
+    <!-- 检查登录状态的脚本 -->
+    <script>
+        // 检查登录状态
+        fetch('php/check_admin_session.php', {
+            method: 'GET',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.logged_in) {
+                window.location.href = 'admin.html';
+            }
+        })
+        .catch(error => {
+            console.error('Session check failed:', error);
+            window.location.href = 'admin.html';
+        });
+    </script>
+
     <header>
         <div class="container">
             <h1>青岛海湾化学股份有限公司</h1>
-            <h2>质量监督检验部 - 后台管理</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">返回首页</a></li>
-                    <li><a href="#equipment">设备管理</a></li>
-                    <li><a href="#projects">项目管理</a></li>
-                    <li><a href="organization.html">组织架构</a></li>
-                    <li><a href="#">数据统计</a></li>
-                    <li><a href="#">退出登录</a></li>
-                </ul>
-            </nav>
+            <h2>质量监督检验部 - 管理后台</h2>
         </div>
     </header>
 
-    <!-- 主体内容 -->
-    <main class="container admin-dashboard">
-        <!-- 设备管理 -->
-        <section id="equipment" class="card">
-            <h2>设备信息管理</h2>
-            <form class="edit-form" action="php/save_equipment.php" method="POST">
-                <div class="form-group">
-                    <label for="equipment-name">设备名称：</label>
-                    <input type="text" id="equipment-name" name="equipment-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="equipment-category">设备分类：</label>
-                    <select id="equipment-category" name="equipment-category" required>
-                        <option value="analysis">01 分析仪器与设备</option>
-                        <option value="optical">02 光学仪器与设备</option>
-                        <option value="optical-measurement">03 光学测量仪器</option>
-                        <option value="heating-cooling">04 加热、制冷及空气净化与调节设备</option>
-                        <option value="thermal-measurement">05 热学测量仪器</option>
-                        <option value="mechanical-testing">06 力学试验仪器与设备</option>
-                        <option value="mechanical-measurement">07 力学测量仪器</option>
-                        <option value="physical-properties">08 物性测量仪器与设备</option>
-                        <option value="sample-processing">09 样品处理仪器与设备</option>
-                        <option value="acoustic-measurement">10 声学测量仪器</option>
-                        <option value="geometric-measurement">11 几何学测量仪器</option>
-                        <option value="time-frequency-measurement">12 时间频率测量仪器</option>
-                        <option value="radio-measurement">13 无线电测量仪器</option>
-                        <option value="electromagnetic-measurement">14 电磁学测量仪器</option>
-                        <option value="ionizing-radiation-measurement">15 电离辐射测量仪器</option>
-                        <option value="specialized-measurement">16 其他应用领域专用测量仪器</option>
-                        <option value="biotechnology">17 生物技术仪器与设备</option>
-                        <option value="other-lab-equipment">18 实验室其他设备</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="equipment-quantity">数量：</label>
-                    <input type="number" id="equipment-quantity" name="equipment-quantity" required>
-                </div>
-                <div class="form-group">
-                    <label for="equipment-image">图片URL：</label>
-                    <input type="url" id="equipment-image" name="equipment-image">
-                </div>
-                <div class="form-buttons">
-                    <button type="submit">保存</button>
-                    <button type="button" class="cancel">取消</button>
-                </div>
-            </form>
+    <div class="dashboard-container">
+        <div class="dashboard-header">
+            <h2>管理员控制面板</h2>
+            <button class="logout-btn" onclick="logout()">退出登录</button>
+        </div>
+
+        <!-- 仪器设备管理 -->
+        <section class="management-section">
+            <h3 class="section-title">仪器设备管理</h3>
+            <button class="add-btn action-btn" onclick="showAddEquipmentModal()">添加新设备</button>
+            <div id="equipmentList"></div>
         </section>
 
-        <!-- 项目管理 -->
-        <section id="projects" class="card">
-            <h2>分析检测项目管理</h2>
-            <form class="edit-form" action="php/save_project.php" method="POST">
-                <div class="form-group">
-                    <label for="project-name">项目名称：</label>
-                    <input type="text" id="project-name" name="project-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="project-description">项目描述：</label>
-                    <textarea id="project-description" name="project-description" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="project-manager">负责人：</label>
-                    <input type="text" id="project-manager" name="project-manager" required>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit">保存</button>
-                    <button type="button" class="cancel">取消</button>
-                </div>
-            </form>
+        <!-- 人员信息管理 -->
+        <section class="management-section">
+            <h3 class="section-title">人员信息管理</h3>
+            <button class="add-btn action-btn" onclick="showAddStaffModal()">添加新员工</button>
+            <div id="staffList"></div>
+        </section>
+
+        <!-- 分析检测项目管理 -->
+        <section class="management-section">
+            <h3 class="section-title">分析检测项目管理</h3>
+            <button class="add-btn action-btn" onclick="showAddProjectModal()">添加新项目</button>
+            <div id="projectList"></div>
         </section>
 
         <!-- 组织架构管理 -->
-        <section id="organization" class="card">
-            <h2>组织架构管理</h2>
-            <form class="edit-form" action="php/save_organization.php" method="POST">
-                <div class="form-group">
-                    <label for="group-name">小组名称：</label>
-                    <input type="text" id="group-name" name="group-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="group-equipment">仪器设备：</label>
-                    <select id="group-equipment" name="group-equipment[]" multiple>
-                        <!-- 动态加载设备信息 -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="group-staff">人员：</label>
-                    <select id="group-staff" name="group-staff[]" multiple>
-                        <!-- 动态加载人员信息 -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="group-projects">分析检测项目：</label>
-                    <select id="group-projects" name="group-projects[]" multiple>
-                        <!-- 动态加载项目信息 -->
-                    </select>
-                </div>
-                <div class="form-buttons">
-                    <button type="submit">保存</button>
-                    <button type="button" class="cancel">取消</button>
-                </div>
-            </form>
+        <section class="management-section">
+            <h3 class="section-title">组织架构管理</h3>
+            <button class="add-btn action-btn" onclick="showAddOrgModal()">添加新部门</button>
+            <div id="orgList"></div>
         </section>
+    </div>
 
-    </main>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司 质量监督检验部</p>
-            <p>联系方式：15684706918</p>
+    <!-- 模态框 -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle"></h3>
+            <form id="addForm">
+                <!-- 表单内容将通过JavaScript动态生成 -->
+            </form>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // 获取设备信息
-        fetch('php/get_equipment.php')
-            .then(response => response.json())
-            .then(data => {
-                // 处理设备数据
-                console.log(data);
-            });
+        // 退出登录
+        function logout() {
+            fetch('php/admin_logout.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.href = 'admin.html';
+                    }
+                })
+                .catch(error => console.error('Logout failed:', error));
+        }
 
-        // 获取项目信息
-        fetch('php/get_projects.php')
-            .then(response => response.json())
-            .then(data => {
-                // 处理项目数据
-                console.log(data);
-            });
+        // 加载数据列表
+        function loadEquipmentList() {
+            fetch('php/get_equipment.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('equipmentList');
+                    // 创建表格显示设备列表
+                    // ... 实现设备列表显示逻辑
+                });
+        }
+
+        function loadStaffList() {
+            fetch('php/get_staff.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('staffList');
+                    // 创建表格显示人员列表
+                    // ... 实现人员列表显示逻辑
+                });
+        }
+
+        function loadProjectList() {
+            fetch('php/get_projects.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('projectList');
+                    // 创建表格显示项目列表
+                    // ... 实现项目列表显示逻辑
+                });
+        }
+
+        function loadOrgList() {
+            fetch('php/get_organization.php')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('orgList');
+                    // 创建表格显示组织架构列表
+                    // ... 实现组织架构列表显示逻辑
+                });
+        }
+
+        // 显示添加模态框
+        function showAddEquipmentModal() {
+            const modal = document.getElementById('addModal');
+            const form = document.getElementById('addForm');
+            document.getElementById('modalTitle').textContent = '添加新设备';
+            
+            // 清空表单
+            form.innerHTML = `
+                <div class="form-group">
+                    <label for="equipmentName">设备名称</label>
+                    <input type="text" id="equipmentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentModel">设备型号</label>
+                    <input type="text" id="equipmentModel" required>
+                </div>
+                <div class="form-group">
+                    <label for="equipmentDesc">设备描述</label>
+                    <textarea id="equipmentDesc" rows="3"></textarea>
+                </div>
+                <button type="submit" class="action-btn add-btn">保存</button>
+                <button type="button" class="action-btn delete-btn" onclick="closeModal()">取消</button>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('addModal').style.display = 'none';
+        }
+
+        // 页面加载完成后加载数据
+        document.addEventListener('DOMContentLoaded', function() {
+            loadEquipmentList();
+            loadStaffList();
+            loadProjectList();
+            loadOrgList();
+        });
     </script>
 </body>
 </html> 

@@ -1,25 +1,33 @@
 <?php
-// 连接数据库
-$conn = new mysqli('localhost', 'root', 'password', 'qd_haiwan_chem');
+// 引入认证中间件
+require_once 'auth_middleware.php';
+// 引入数据库配置
+require_once '../config/db_config.php';
 
-// 检查连接
-if ($conn->connect_error) {
-    die("连接失败: " . $conn->connect_error);
+try {
+    $conn = getDBConnection();
+    
+    // 准备SQL语句
+    $sql = "SELECT * FROM equipment ORDER BY id DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    
+    // 获取所有结果
+    $equipment = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    // 返回JSON响应
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => true,
+        'data' => $equipment
+    ]);
+    
+} catch (Exception $e) {
+    // 返回错误响应
+    http_response_code(500);
+    echo json_encode([
+        'success' => false,
+        'message' => '获取设备信息失败：' . $e->getMessage()
+    ]);
 }
-
-// 查询数据
-$sql = "SELECT * FROM equipment";
-$result = $conn->query($sql);
-
-$equipment = array();
-
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $equipment[] = $row;
-    }
-}
-
-echo json_encode($equipment);
-
-$conn->close();
 ?> 
