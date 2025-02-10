@@ -1,15 +1,29 @@
-/* 全局样式 */
+/* 全局样式优化 */
+:root {
+    --primary-color: #1a73e8;
+    --secondary-color: #34a853;
+    --accent-color: #ea4335;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --background-light: #f8f9fa;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --transition-normal: all 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: var(--transition-normal);
 }
 
 body {
-    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
 }
 
 .container {
@@ -18,11 +32,14 @@ body {
     padding: 0 20px;
 }
 
-/* 头部样式 */
+/* 头部样式优化 */
 header {
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
+    background: linear-gradient(to right, #ffffff, #f8f9fa);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
 }
 
 header .container {
@@ -30,18 +47,21 @@ header .container {
 }
 
 header h1 {
-    font-size: 24px;
-    color: #333;
+    font-size: 28px;
+    color: var(--primary-color);
     margin-bottom: 10px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 header h2 {
-    font-size: 18px;
-    color: #666;
+    font-size: 20px;
+    color: var(--text-secondary);
     margin-bottom: 20px;
+    font-weight: 500;
 }
 
-/* 导航样式 */
+/* 导航样式优化 */
 nav ul {
     list-style: none;
     display: flex;
@@ -51,19 +71,37 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: #333;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
 }
 
-nav a:hover {
-    background-color: #f0f0f0;
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+nav a:hover::before {
+    transform: scaleX(1);
 }
 
 nav a.active {
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
+}
+
+nav a:hover {
+    background-color: rgba(26, 115, 232, 0.1);
 }
 
 /* 主体内容样式 */
@@ -92,27 +130,28 @@ p {
     color: #666;
 }
 
-/* 页脚样式 */
+/* 页脚样式优化 */
 footer {
-    background: #333;
+    background: linear-gradient(to right, #202124, #303134);
     color: #fff;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 40px 0;
+    margin-top: 60px;
 }
 
 footer p {
-    color: #fff;
+    color: rgba(255,255,255,0.8);
     margin: 5px 0;
+    font-size: 14px;
 }
 
-/* 响应式设计 */
+/* 响应式优化 */
 @media (max-width: 768px) {
     header h1 {
-        font-size: 20px;
+        font-size: 24px;
     }
 
     header h2 {
-        font-size: 16px;
+        font-size: 18px;
     }
 
     nav ul {
@@ -132,58 +171,98 @@ footer p {
     .welcome-image {
         max-width: 100%;
     }
+
+    .card {
+        padding: 20px;
+    }
 }
 
-/* 通用卡片样式 */
+/* 通用卡片样式优化 */
 .card {
     background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
     margin-bottom: 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* 表单样式 */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 表单样式优化 */
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
 }
 
-.form-buttons {
-    margin-top: 20px;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26,115,232,0.2);
+    outline: none;
 }
 
+/* 按钮样式优化 */
 button {
-    padding: 8px 16px;
+    padding: 12px 24px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 button[type="submit"] {
-    background: #007bff;
+    background: var(--primary-color);
     color: white;
 }
 
 button[type="submit"]:hover {
-    background: #0056b3;
+    background: #1557b0;
 }
 
 button.cancel {
@@ -289,14 +368,6 @@ button.cancel:hover {
     gap: 20px;
     max-width: 800px;
     margin: 0 auto;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
 .form-group textarea {
@@ -642,4 +713,20 @@ img {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out;
 } 
