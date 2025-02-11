@@ -3,11 +3,7 @@ backend:
   repo: justgoinngdown/goingdown
   branch: main
   base_url: https://api.github.com
-  auth_endpoint: auth
-  api_root: https://api.github.com
-  app_id: 741077
-  client_id: Ov23licGgGSttbxcK43n
-  callback_url: https://zj.haiwan.me/callback
+  auth_type: pkce
 
 # 设置媒体文件存储位置
 media_folder: "images"

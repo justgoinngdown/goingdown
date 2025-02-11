@@ -11,9 +11,6 @@
     <!-- 引入 Decap CMS 核心脚本 -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     
-    <!-- 引入 GitHub OAuth 认证脚本 -->
-    <script src="https://unpkg.com/netlify-auth-providers"></script>
-    
     <style>
         /* 自定义后台样式 */
         .custom-logo {
@@ -103,82 +100,53 @@
     
     <!-- 添加初始化和错误处理脚本 -->
     <script>
-        // 错误处理函数
-        function handleError(error) {
-            console.error('CMS Error:', error);
-            const loadingMessage = document.querySelector('.loading-message');
-            const loginButton = document.querySelector('.login-button');
-            const errorMessage = document.querySelector('.error-message');
-            
-            loadingMessage.style.display = 'none';
-            loginButton.style.display = 'block';
-            errorMessage.style.display = 'block';
-            errorMessage.textContent = '加载出错，请点击下方按钮重新登录';
-        }
-        
-        // 处理登录
-        function handleLogin() {
-            // 直接使用 GitHub OAuth 认证
-            window.location.href = 'https://github.com/login/oauth/authorize?' + new URLSearchParams({
-                client_id: 'Ov23licGgGSttbxcK43n',
-                redirect_uri: 'https://zj.haiwan.me/callback',
-                scope: 'repo,user',
-                state: Math.random().toString(36).substring(7)
-            }).toString();
-        }
-        
-        // 获取URL参数
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-        
         // 初始化 CMS
-        try {
-            // 检查是否有认证码返回
-            const code = getQueryParam('code');
-            if (code) {
-                // 显示加载信息
-                document.querySelector('.loading-message').textContent = '正在验证登录信息...';
-                
-                // 初始化 CMS
-                window.CMS.init({
-                    config: {
-                        backend: {
-                            name: 'github',
-                            repo: 'justgoinngdown/goingdown',
-                            branch: 'main',
-                            base_url: 'https://api.github.com',
-                            auth_endpoint: 'auth',
-                            api_root: 'https://api.github.com',
-                            auth_type: 'github',
-                            app_id: '741077'
-                        },
-                        media_folder: 'images',
-                        public_folder: '/images',
-                        locale: 'zh_Hans',
-                        load_config_file: true,
-                        display_url: 'https://zj.haiwan.me'
+        window.CMS.init({
+            config: {
+                backend: {
+                    name: 'github',
+                    repo: 'justgoinngdown/goingdown',
+                    branch: 'main',
+                    auth_type: 'pkce',
+                    base_url: 'https://api.github.com'
+                },
+                media_folder: 'images',
+                public_folder: '/images',
+                locale: 'zh_Hans',
+                load_config_file: false,
+                collections: [
+                    {
+                        name: 'equipment',
+                        label: '仪器设备',
+                        folder: '_equipment',
+                        create: true,
+                        fields: [
+                            { label: '设备名称', name: 'title', widget: 'string' },
+                            { label: '型号', name: 'model', widget: 'string' },
+                            { label: '描述', name: 'description', widget: 'markdown' }
+                        ]
                     }
-                });
-            } else {
-                // 显示登录按钮
-                document.querySelector('.loading-message').style.display = 'none';
-                document.querySelector('.login-button').style.display = 'block';
+                ]
             }
-        } catch (error) {
-            handleError(error);
-        }
-        
+        });
+
         // 监听 CMS 事件
-        if (window.CMS) {
-            window.CMS.registerEventListener({
-                name: 'onLogin',
-                handler: function() {
-                    document.querySelector('.loading-message').style.display = 'none';
-                }
-            });
-        }
+        window.CMS.registerEventListener({
+            name: 'onLogin',
+            handler: function() {
+                document.querySelector('.loading-message').style.display = 'none';
+            }
+        });
+
+        window.CMS.registerEventListener({
+            name: 'onError',
+            handler: function(error) {
+                console.error('CMS Error:', error);
+                document.querySelector('.loading-message').style.display = 'none';
+                document.querySelector('.error-message').style.display = 'block';
+                document.querySelector('.error-message').textContent = '加载出错，请刷新页面重试';
+            }
+        });
     </script>
 </body>
 </html> 
