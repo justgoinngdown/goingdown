@@ -85,6 +85,7 @@
             font-size: 14px;
             text-align: center;
             display: none;
+            max-width: 80%;
         }
     </style>
 </head>
@@ -117,38 +118,41 @@
         
         // 处理登录
         function handleLogin() {
-            const authenticator = new netlify.default({});
-            authenticator.authenticate(
-                { provider: 'github', scope: 'repo,user' },
-                function(error, data) {
-                    if (error) {
-                        handleError(error);
-                        return;
-                    }
-                    // 保存认证信息
-                    localStorage.setItem('githubToken', data.token);
-                    // 重新加载页面
-                    window.location.reload();
-                }
-            );
+            // 直接使用 GitHub OAuth 认证
+            window.location.href = 'https://github.com/login/oauth/authorize?' + new URLSearchParams({
+                client_id: 'Ov23licGgGSttbxcK43n',
+                redirect_uri: window.location.origin + '/admin/',
+                scope: 'repo,user',
+                state: Math.random().toString(36).substring(7)
+            }).toString();
+        }
+        
+        // 获取URL参数
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
         }
         
         // 初始化 CMS
         try {
-            const token = localStorage.getItem('githubToken');
-            
-            if (!token) {
-                document.querySelector('.loading-message').style.display = 'none';
-                document.querySelector('.login-button').style.display = 'block';
-            } else {
+            // 检查是否有认证码返回
+            const code = getQueryParam('code');
+            if (code) {
+                // 显示加载信息
+                document.querySelector('.loading-message').textContent = '正在验证登录信息...';
+                
+                // 初始化 CMS
                 window.CMS.init({
                     config: {
                         backend: {
                             name: 'github',
                             repo: 'justgoinngdown/goingdown',
                             branch: 'main',
+                            base_url: 'https://api.github.com',
+                            auth_endpoint: 'auth',
+                            api_root: 'https://api.github.com',
                             auth_type: 'github',
-                            token: token
+                            app_id: '741077'
                         },
                         media_folder: 'images',
                         public_folder: '/images',
@@ -157,17 +161,23 @@
                         display_url: 'https://zj.haiwan.me'
                     }
                 });
-                
-                // 监听 CMS 事件
-                window.CMS.registerEventListener({
-                    name: 'onLogin',
-                    handler: function() {
-                        document.querySelector('.loading-message').style.display = 'none';
-                    }
-                });
+            } else {
+                // 显示登录按钮
+                document.querySelector('.loading-message').style.display = 'none';
+                document.querySelector('.login-button').style.display = 'block';
             }
         } catch (error) {
             handleError(error);
+        }
+        
+        // 监听 CMS 事件
+        if (window.CMS) {
+            window.CMS.registerEventListener({
+                name: 'onLogin',
+                handler: function() {
+                    document.querySelector('.loading-message').style.display = 'none';
+                }
+            });
         }
     </script>
 </body>
