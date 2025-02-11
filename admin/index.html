@@ -121,7 +121,7 @@
             // 直接使用 GitHub OAuth 认证
             window.location.href = 'https://github.com/login/oauth/authorize?' + new URLSearchParams({
                 client_id: 'Ov23licGgGSttbxcK43n',
-                redirect_uri: window.location.origin + '/admin/',
+                redirect_uri: 'https://zj.haiwan.me/callback',
                 scope: 'repo,user',
                 state: Math.random().toString(36).substring(7)
             }).toString();
