@@ -3,70 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>人员信息 - 青岛海湾化学股份有限公司</title>
+    <title>人员信息 - 青岛海湾化学</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- 引入 Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
-    <style>
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 40px 0;
-        }
-
-        .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease;
-            position: relative;
-            height: 400px; /* 固定高度 */
-            width: 100%;
-        }
-
-        .chart-container:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .chart-title {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        canvas {
-            width: 100% !important;
-            height: 300px !important;
-        }
-
-        .staff-intro {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .staff-intro h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .staff-intro p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- 头部 -->
     <header>
         <div class="container">
             <h1>青岛海湾化学股份有限公司</h1>
@@ -78,173 +20,85 @@
                     <li><a href="staff.html" class="active">人员信息</a></li>
                     <li><a href="projects.html">分析检测项目</a></li>
                     <li><a href="organization.html">组织架构</a></li>
-                    <li><a href="admin.html">管理员登录</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- 主体内容 -->
     <main class="container">
-        <section class="staff-intro animate-fadeInUp">
-            <h2>我们的团队</h2>
-            <p>质量监督检验部拥有一支高素质的专业团队，包括多名工程师、高级技师和技师。团队成员具有丰富的检验经验和专业知识，致力于为公司提供高质量的检测服务。</p>
+        <h2>人员信息统计</h2>
+        
+        <!-- 男女比例 -->
+        <section class="card">
+            <h3>男女比例</h3>
+            <canvas id="genderChart"></canvas>
         </section>
 
-        <div class="stats-container">
-            <div class="chart-container animate-fadeInUp">
-                <div class="chart-title">性别比例</div>
-                <canvas id="genderChart"></canvas>
-            </div>
-            <div class="chart-container animate-fadeInUp" style="animation-delay: 0.2s">
-                <div class="chart-title">学历分布</div>
-                <canvas id="educationChart"></canvas>
-            </div>
-            <div class="chart-container animate-fadeInUp" style="animation-delay: 0.4s">
-                <div class="chart-title">年龄分布</div>
-                <canvas id="ageChart"></canvas>
-            </div>
-        </div>
+        <!-- 学历占比 -->
+        <section class="card">
+            <h3>学历占比</h3>
+            <canvas id="educationChart"></canvas>
+        </section>
+
+        <!-- 年龄占比 -->
+        <section class="card">
+            <h3>年龄占比</h3>
+            <canvas id="ageChart"></canvas>
+        </section>
     </main>
 
+    <!-- 页脚 -->
     <footer>
         <div class="container">
             <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司</p>
             <p>联系方式：15684706918</p>
-        </div>
     </footer>
 
     <script>
-        // 等待DOM加载完成后再初始化图表
-        document.addEventListener('DOMContentLoaded', function() {
-            // 性别比例图表
-            const genderCtx = document.getElementById('genderChart').getContext('2d');
-            new Chart(genderCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['男性', '女性'],
-                    datasets: [{
-                        data: [33.33, 66.67], // 1:2的比例
-                        backgroundColor: [
-                            'rgba(54, 162, 235, 0.8)',
-                            'rgba(255, 99, 132, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 99, 132, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.label + ': ' + context.raw + '%';
-                                }
-                            }
-                        }
+        // 获取统计数据
+        fetch('php/get_staff_stats.php')
+            .then(response => response.json())
+            .then(data => {
+                // 男女比例
+                const genderCtx = document.getElementById('genderChart').getContext('2d');
+                new Chart(genderCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['男', '女'],
+                        datasets: [{
+                            data: [data.gender.male, data.gender.female],
+                            backgroundColor: ['#3498db', '#e74c3c']
+                        }]
                     }
-                }
-            });
+                });
 
-            // 学历分布图表
-            const educationCtx = document.getElementById('educationChart').getContext('2d');
-            new Chart(educationCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['大专', '本科', '研究生'],
-                    datasets: [{
-                        data: [70, 25, 5],
-                        backgroundColor: [
-                            'rgba(255, 159, 64, 0.8)',
-                            'rgba(75, 192, 192, 0.8)',
-                            'rgba(153, 102, 255, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 159, 64, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.label + ': ' + context.raw + '%';
-                                }
-                            }
-                        }
+                // 学历占比
+                const educationCtx = document.getElementById('educationChart').getContext('2d');
+                new Chart(educationCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['本科', '硕士', '博士'],
+                        datasets: [{
+                            data: [data.education.bachelor, data.education.master, data.education.doctor],
+                            backgroundColor: ['#3498db', '#2ecc71', '#e74c3c']
+                        }]
                     }
-                }
-            });
+                });
 
-            // 年龄分布图表
-            const ageCtx = document.getElementById('ageChart').getContext('2d');
-            new Chart(ageCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['0-30岁', '31-40岁', '41-50岁', '51岁以上'],
-                    datasets: [{
-                        label: '年龄分布',
-                        data: [80, 10, 8, 2],
-                        backgroundColor: [
-                            'rgba(26, 115, 232, 0.8)',
-                            'rgba(52, 168, 83, 0.8)',
-                            'rgba(251, 188, 4, 0.8)',
-                            'rgba(234, 67, 53, 0.8)'
-                        ],
-                        borderColor: [
-                            'rgba(26, 115, 232, 1)',
-                            'rgba(52, 168, 83, 1)',
-                            'rgba(251, 188, 4, 1)',
-                            'rgba(234, 67, 53, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            max: 100,
-                            ticks: {
-                                callback: function(value) {
-                                    return value + '%';
-                                }
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.raw + '%';
-                                }
-                            }
-                        }
+                // 年龄占比
+                const ageCtx = document.getElementById('ageChart').getContext('2d');
+                new Chart(ageCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['20-30岁', '31-40岁', '41-50岁', '51岁以上'],
+                        datasets: [{
+                            data: [data.age.twenties, data.age.thirties, data.age.forties, data.age.fifties],
+                            backgroundColor: ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6']
+                        }]
                     }
-                }
+                });
             });
-        });
     </script>
 </body>
 </html> 
