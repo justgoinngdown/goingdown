@@ -1,7 +1,11 @@
 backend:
   name: github
-  repo: justgoinngdown/goingdown # 替换为你的 GitHub 仓库
-  branch: main # 默认分支
+  repo: justgoinngdown/goingdown
+  branch: main
+  auth_endpoint: auth
+  base_url: https://api.netlify.com
+  client_id: Ov23licGgGSttbxcK43n
+  auth_type: pkce # 使用 PKCE 认证流程，更安全
 
 # 设置媒体文件存储位置
 media_folder: "images"
