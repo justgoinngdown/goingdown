@@ -2,12 +2,7 @@ backend:
   name: github
   repo: justgoinngdown/goingdown
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  client_id: Ov23licGgGSttbxcK43n
-  auth_type: pkce
-  app_id: 741077
-  callback_url: https://zj.haiwan.me/admin/
+  auth_type: github
 
 # 设置媒体文件存储位置
 media_folder: "images"

@@ -8,42 +8,11 @@
     <!-- 添加安全相关的 meta 标签 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <!-- 引入 Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    
-    <!-- Decap CMS 核心脚本 -->
+    <!-- 引入 Decap CMS 核心脚本 -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     
-    <!-- 初始化 CMS 配置 -->
-    <script>
-        // 配置 CMS
-        window.CMS_MANUAL_INIT = true;
-        
-        // 初始化函数
-        window.initCMS = function() {
-            CMS.init({
-                config: {
-                    backend: {
-                        name: 'github',
-                        repo: 'justgoinngdown/goingdown',
-                        branch: 'main',
-                        base_url: 'https://api.netlify.com',
-                        auth_endpoint: 'auth',
-                        client_id: 'Ov23licGgGSttbxcK43n',
-                        auth_type: 'pkce'
-                    },
-                    load_config_file: false,
-                    media_folder: 'images',
-                    public_folder: '/images',
-                    locale: 'zh_Hans',
-                    site_url: 'https://zj.haiwan.me',
-                    display_url: 'https://zj.haiwan.me',
-                    logo_url: '/images/department.jpg',
-                    collections: window.CMSCollections || []
-                }
-            });
-        };
-    </script>
+    <!-- 引入 GitHub OAuth 认证脚本 -->
+    <script src="https://unpkg.com/netlify-auth-providers"></script>
     
     <style>
         /* 自定义后台样式 */
@@ -83,12 +52,13 @@
             transform: translate(-50%, -50%);
             font-size: 18px;
             color: #1a73e8;
+            text-align: center;
         }
 
         /* 添加登录按钮样式 */
         .login-button {
             position: fixed;
-            top: 50%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 12px 24px;
@@ -104,6 +74,18 @@
         .login-button:hover {
             background: #1557b0;
         }
+
+        /* 添加错误提示样式 */
+        .error-message {
+            position: fixed;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #dc3545;
+            font-size: 14px;
+            text-align: center;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -113,51 +95,80 @@
     <!-- 添加登录按钮 -->
     <button class="login-button" onclick="handleLogin()">使用 GitHub 登录</button>
     
+    <!-- 添加错误提示 -->
+    <div class="error-message"></div>
+    
     <!-- Decap CMS 会自动在此处渲染管理界面 -->
     
-    <!-- 添加错误处理和初始化脚本 -->
+    <!-- 添加初始化和错误处理脚本 -->
     <script>
-        // 错误处理
-        window.onerror = function(msg, url, lineNo, columnNo, error) {
-            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
-            document.querySelector('.loading-message').textContent = '加载出错，请刷新页面重试';
-            return false;
-        };
+        // 错误处理函数
+        function handleError(error) {
+            console.error('CMS Error:', error);
+            const loadingMessage = document.querySelector('.loading-message');
+            const loginButton = document.querySelector('.login-button');
+            const errorMessage = document.querySelector('.error-message');
+            
+            loadingMessage.style.display = 'none';
+            loginButton.style.display = 'block';
+            errorMessage.style.display = 'block';
+            errorMessage.textContent = '加载出错，请点击下方按钮重新登录';
+        }
         
         // 处理登录
         function handleLogin() {
-            if (window.netlifyIdentity) {
-                window.netlifyIdentity.open();
-            } else {
-                window.location.href = 'https://github.com/login/oauth/authorize?client_id=Ov23licGgGSttbxcK43n&redirect_uri=' + encodeURIComponent(window.location.origin + '/admin/') + '&scope=repo,user';
-            }
-        }
-        
-        // 监听 CMS 加载状态
-        if (window.CMS) {
-            window.CMS.registerEventListener({
-                name: 'preSave',
-                handler: function(entry) {
-                    console.log('Content about to be saved', entry);
-                },
-            });
-        }
-        
-        // 检查登录状态
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                const loadingMessage = document.querySelector('.loading-message');
-                const loginButton = document.querySelector('.login-button');
-                
-                if (!window.CMS.currentUser) {
-                    loadingMessage.style.display = 'none';
-                    loginButton.style.display = 'block';
+            const authenticator = new netlify.default({});
+            authenticator.authenticate(
+                { provider: 'github', scope: 'repo,user' },
+                function(error, data) {
+                    if (error) {
+                        handleError(error);
+                        return;
+                    }
+                    // 保存认证信息
+                    localStorage.setItem('githubToken', data.token);
+                    // 重新加载页面
+                    window.location.reload();
                 }
-            }, 3000);
-        });
+            );
+        }
         
         // 初始化 CMS
-        window.initCMS();
+        try {
+            const token = localStorage.getItem('githubToken');
+            
+            if (!token) {
+                document.querySelector('.loading-message').style.display = 'none';
+                document.querySelector('.login-button').style.display = 'block';
+            } else {
+                window.CMS.init({
+                    config: {
+                        backend: {
+                            name: 'github',
+                            repo: 'justgoinngdown/goingdown',
+                            branch: 'main',
+                            auth_type: 'github',
+                            token: token
+                        },
+                        media_folder: 'images',
+                        public_folder: '/images',
+                        locale: 'zh_Hans',
+                        load_config_file: true,
+                        display_url: 'https://zj.haiwan.me'
+                    }
+                });
+                
+                // 监听 CMS 事件
+                window.CMS.registerEventListener({
+                    name: 'onLogin',
+                    handler: function() {
+                        document.querySelector('.loading-message').style.display = 'none';
+                    }
+                });
+            }
+        } catch (error) {
+            handleError(error);
+        }
     </script>
 </body>
 </html> 
