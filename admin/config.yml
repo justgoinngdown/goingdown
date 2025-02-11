@@ -2,10 +2,10 @@ backend:
   name: github
   repo: justgoinngdown/goingdown
   branch: main
-  auth_endpoint: auth
   base_url: https://api.netlify.com
+  auth_endpoint: auth
   client_id: Ov23licGgGSttbxcK43n
-  auth_type: pkce # 使用 PKCE 认证流程，更安全
+  auth_type: pkce
 
 # 设置媒体文件存储位置
 media_folder: "images"
@@ -14,9 +14,9 @@ public_folder: "/images"
 # 本地化设置
 locale: 'zh_Hans'
 
-# 网站标题
-site_url: https://justgoinngdown.github.io/goingdown
-display_url: https://justgoinngdown.github.io/goingdown
+# 网站基本信息
+site_url: https://zj.haiwan.me
+display_url: https://zj.haiwan.me
 logo_url: /images/department.jpg
 
 # 内容集合配置
