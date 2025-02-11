@@ -732,50 +732,57 @@ img {
 }
 
 /* 时间线样式 */
-.timeline {
-    position: relative;
+.timeline-container {
+    width: 100%;
+    overflow-x: auto;
     padding: 40px 0;
 }
 
-.timeline::before {
+.timeline-horizontal {
+    display: flex;
+    min-width: max-content;
+    padding: 20px 40px;
+    position: relative;
+}
+
+.timeline-horizontal::before {
     content: '';
     position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
+    left: 40px;
+    right: 40px;
+    top: 50%;
+    height: 2px;
     background: var(--primary-color);
-    transform: translateX(-50%);
+    transform: translateY(-50%);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 60px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    width: 300px;
+    margin-right: 60px;
+    flex-shrink: 0;
 }
 
 .timeline-item:last-child {
-    margin-bottom: 0;
+    margin-right: 0;
 }
 
 .timeline-dot {
     position: absolute;
     left: 50%;
-    top: 0;
-    width: 20px;
-    height: 20px;
+    top: 50%;
+    width: 16px;
+    height: 16px;
     background: var(--primary-color);
     border-radius: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     z-index: 1;
 }
 
 .timeline-date {
     position: absolute;
-    top: -30px;
     left: 50%;
+    bottom: calc(100% + 20px);
     transform: translateX(-50%);
     background: var(--primary-color);
     color: white;
@@ -783,24 +790,14 @@ img {
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .timeline-content {
-    width: 45%;
-    margin-top: 40px;
+    padding-top: 60px;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-left: auto;
-    transform: translateX(30px);
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-right: auto;
-    transform: translateX(-30px);
-}
-
-.timeline .news-card {
+.timeline-horizontal .news-card {
     margin: 0;
     background: white;
     border-radius: 15px;
@@ -809,60 +806,83 @@ img {
     transition: transform 0.3s ease;
 }
 
-.timeline .news-card:hover {
+.timeline-horizontal .news-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
-.timeline .news-image {
-    height: 200px;
+.timeline-horizontal .news-image {
+    height: 160px;
     overflow: hidden;
 }
 
-.timeline .news-image img {
+.timeline-horizontal .news-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.timeline .news-card:hover .news-image img {
+.timeline-horizontal .news-card:hover .news-image img {
     transform: scale(1.1);
 }
 
-.timeline .news-content {
-    padding: 20px;
+.timeline-horizontal .news-content {
+    padding: 15px;
 }
 
-.timeline .news-content h3 {
+.timeline-horizontal .news-content h3 {
     color: var(--primary-color);
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
-.timeline .news-content p {
+.timeline-horizontal .news-content p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
 }
 
 @media (max-width: 768px) {
-    .timeline::before {
-        left: 30px;
+    .timeline-container {
+        padding: 20px 0;
     }
 
-    .timeline-dot {
-        left: 30px;
+    .timeline-horizontal {
+        padding: 20px;
     }
 
-    .timeline-date {
-        left: 30px;
-        transform: translateX(-50%);
+    .timeline-item {
+        width: 260px;
+        margin-right: 40px;
     }
 
     .timeline-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-        transform: translateX(0) !important;
+        padding-top: 50px;
     }
+
+    .timeline-horizontal .news-image {
+        height: 140px;
+    }
+}
+
+/* 添加滚动条样式 */
+.timeline-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+    background: #1557b0;
 } 
