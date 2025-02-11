@@ -6,6 +6,8 @@ backend:
   auth_endpoint: auth
   client_id: Ov23licGgGSttbxcK43n
   auth_type: pkce
+  app_id: 741077
+  callback_url: https://zj.haiwan.me/admin/
 
 # 设置媒体文件存储位置
 media_folder: "images"
