@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理系统</title>
-    <!-- 添加必要的样式和脚本 -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <style>
         /* 自定义样式 */
@@ -30,17 +28,15 @@
 </head>
 <body>
     <script>
-        // 配置CMS
         CMS.init({
             config: {
                 backend: {
                     name: 'github',
                     repo: 'justgoinngdown/goingdown',
                     branch: 'main',
-                    base_url: 'https://api.netlify.com',
-                    auth_endpoint: 'auth',
                     client_id: 'Ov23li8JXB5JlZkc0mNj',
-                    app_id: 'goingdown'
+                    auth_type: 'implicit',
+                    site_domain: 'justgoinngdown.github.io'
                 },
                 media_folder: 'images/uploads',
                 public_folder: '/images/uploads',
@@ -74,17 +70,6 @@
                 ]
             }
         });
-
-        // 处理认证
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
     </script>
 </body>
 </html> 
