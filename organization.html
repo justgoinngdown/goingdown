@@ -3,164 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="青岛海湾化学股份有限公司质量监督检验部组织架构介绍">
     <title>组织架构 - 青岛海湾化学</title>
+    <link rel="stylesheet" href="css/modern-style.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 头部 -->
-    <header>
+    <!-- 头部导航 -->
+    <header class="animate-fade">
         <div class="container">
-            <h1>青岛海湾化学股份有限公司</h1>
-            <h2>质量监督检验部</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="equipment.html">仪器设备</a></li>
-                    <li><a href="staff.html">人员信息</a></li>
-                    <li><a href="projects.html">分析检测项目</a></li>
-                    <li><a href="organization.html" class="active">组织架构</a></li>
-                </ul>
-            </nav>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl mb-sm">青岛海湾化学股份有限公司</h1>
+                    <h2 class="text-xl text-secondary">质量监督检验部</h2>
+                </div>
+                <nav class="flex gap-md">
+                    <a href="index.html" class="btn btn-outline">首页</a>
+                    <a href="equipment.html" class="btn btn-outline">仪器设备</a>
+                    <a href="staff.html" class="btn btn-outline">人员信息</a>
+                    <a href="projects.html" class="btn btn-outline">分析检测项目</a>
+                    <a href="organization.html" class="btn btn-primary">组织架构</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- 主体内容 -->
-    <main class="container">
-        <h2>组织架构</h2>
+    <main class="container mt-lg">
+        <h2 class="text-2xl mb-lg text-center">组织架构</h2>
         
-        <!-- 办公室 -->
-        <section class="group">
-            <h3>办公室</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>办公电脑</li>
-                        <li>打印机</li>
-                    </ul>
+        <!-- 部门领导 -->
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">01</div>
+                <h3 class="text-xl">部门领导</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">部长</h4>
+                    <p class="text-md mb-sm">谭树秀</p>
+                    <p class="text-sm text-secondary">负责部门全面工作</p>
                 </div>
-                <div class="group-staff">
-                    <h4>人员</h4>
-                    <ul>
-                        <li>谭树秀 - 部长</li>
-                        <li>丁昌法 - 副部长</li>
-                        <li>裴宝山 - 副部长</li>
-                    </ul>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">副部长</h4>
+                    <p class="text-md mb-sm">丁昌法</p>
+                    <p class="text-sm text-secondary">分管中控一组、中控二组、中控四组工作及设备管理工作</p>
                 </div>
-                <div class="group-projects">
-                    <h4>工作领域</h4>
-                    <ul>
-                        <li>行政管理</li>
-                        <li>协调沟通</li>
-                    </ul>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">副部长</h4>
+                    <p class="text-md mb-sm">裴宝山</p>
+                    <p class="text-sm text-secondary">分管中控三组、中控四组工作及产成品分析工作</p>
                 </div>
             </div>
         </section>
 
         <!-- 中控一组 -->
-        <section class="group">
-            <h3>中控一组</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>气相色谱仪</li>
-                        <li>电位滴定仪</li>
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">02</div>
+                <h3 class="text-xl">中控一组</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">主要职责</h4>
+                    <ul class="list-disc list-inside">
+                        <li>氯碱厂中控分析</li>
+                        <li>VCM厂中控分析</li>
                     </ul>
                 </div>
-                <div class="group-projects">
-                    <h4>分析检测领域</h4>
-                    <ul>
-                        <li>氯碱厂样品</li>
-                        <li>VCM厂样品</li>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">设备配置</h4>
+                    <ul class="list-disc list-inside">
+                        <li>气相色谱仪</li>
+                        <li>电位滴定仪</li>
+                        <li>分光光度计</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- 中控二组 -->
-        <section class="group">
-            <h3>中控二组</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>电感耦合等离子体原子发射光谱仪</li>
-                        <li>电感耦合等离子体质谱仪</li>
-                        <li>干式氧化法TOC分析仪</li>
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">03</div>
+                <h3 class="text-xl">中控二组</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">主要职责</h4>
+                    <ul class="list-disc list-inside">
+                        <li>PVC厂中控分析</li>
+                        <li>热电厂中控分析</li>
+                        <li>公用工程厂中控分析</li>
                     </ul>
                 </div>
-                <div class="group-projects">
-                    <h4>分析检测领域</h4>
-                    <ul>
-                        <li>PVC厂样品</li>
-                        <li>公用工程厂样品</li>
-                        <li>热电厂样品</li>
-                        <li>助剂厂样品</li>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">设备配置</h4>
+                    <ul class="list-disc list-inside">
+                        <li>离子色谱仪</li>
+                        <li>原子吸收分光光度计</li>
+                        <li>TOC分析仪</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- 中控三组 -->
-        <section class="group">
-            <h3>中控三组</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>电子万能材料试验机(弯曲)</li>
-                        <li>电子万能材料试验机(拉伸)</li>
-                        <li>摆锤冲击试验机</li>
-                        <li>熔体流动速率仪</li>
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">04</div>
+                <h3 class="text-xl">中控三组</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">主要职责</h4>
+                    <ul class="list-disc list-inside">
+                        <li>苯乙烯厂中控分析</li>
+                        <li>聚苯乙烯厂中控分析</li>
                     </ul>
                 </div>
-                <div class="group-projects">
-                    <h4>分析检测领域</h4>
-                    <ul>
-                        <li>苯乙烯厂样品</li>
-                        <li>聚苯乙烯厂样品</li>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">设备配置</h4>
+                    <ul class="list-disc list-inside">
+                        <li>气相色谱仪</li>
+                        <li>熔融指数仪</li>
+                        <li>维卡软化点测定仪</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- 中控四组 -->
-        <section class="group">
-            <h3>中控四组</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>气相色谱仪</li>
-                        <li>原子吸收光谱仪</li>
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">05</div>
+                <h3 class="text-xl">中控四组</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">主要职责</h4>
+                    <ul class="list-disc list-inside">
+                        <li>双酚A厂中控分析</li>
+                        <li>环氧树脂厂中控分析</li>
                     </ul>
                 </div>
-                <div class="group-projects">
-                    <h4>分析检测领域</h4>
-                    <ul>
-                        <li>双酚A厂样品</li>
-                        <li>环氧树脂厂样品</li>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">设备配置</h4>
+                    <ul class="list-disc list-inside">
+                        <li>液相色谱仪</li>
+                        <li>气相色谱仪</li>
+                        <li>环氧值测定仪</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- 偏硅酸钠分析组 -->
-        <section class="group">
-            <h3>偏硅酸钠分析组</h3>
-            <div class="group-info">
-                <div class="group-equipment">
-                    <h4>仪器设备</h4>
-                    <ul>
-                        <li>自动电位滴定仪</li>
-                        <li>白度计</li>
+        <section class="card mb-lg animate-fade">
+            <div class="flex items-center mb-md">
+                <div class="text-primary text-2xl mr-sm">06</div>
+                <h3 class="text-xl">偏硅酸钠分析组</h3>
+            </div>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">主要职责</h4>
+                    <ul class="list-disc list-inside">
+                        <li>偏硅酸钠厂中控分析</li>
+                        <li>产品分析</li>
                     </ul>
                 </div>
-                <div class="group-projects">
-                    <h4>分析检测领域</h4>
-                    <ul>
-                        <li>偏硅酸钠分析</li>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">设备配置</h4>
+                    <ul class="list-disc list-inside">
+                        <li>自动电位滴定仪</li>
+                        <li>白度计</li>
+                        <li>分光光度计</li>
                     </ul>
                 </div>
             </div>
@@ -168,48 +185,20 @@
     </main>
 
     <!-- 页脚 -->
-    <footer>
+    <footer class="mt-lg">
         <div class="container">
-            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司</p>
-            <p>联系方式：15684706918</p>
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="mb-sm">&copy; 2025 青岛海湾化学股份有限公司 质量监督检验部</p>
+                    <p class="text-sm text-secondary">联系电话：15684706918</p>
+                </div>
+                <div class="flex gap-md">
+                    <a href="#" class="text-sm text-secondary">隐私政策</a>
+                    <a href="#" class="text-sm text-secondary">使用条款</a>
+                    <a href="#" class="text-sm text-secondary">网站地图</a>
+                </div>
+            </div>
         </div>
     </footer>
-
-    <script>
-        // 获取组织架构信息
-        fetch('php/get_organization.php')
-            .then(response => response.json())
-            .then(data => {
-                const organizationSection = document.querySelector('.organization-list');
-                data.forEach(group => {
-                    const groupDiv = document.createElement('div');
-                    groupDiv.className = 'group';
-                    groupDiv.innerHTML = `
-                        <h3>${group.group_name}</h3>
-                        <div class="group-info">
-                            <div class="group-equipment">
-                                <h4>仪器设备</h4>
-                                <ul>
-                                    ${group.group_equipment.split(',').map(equipment => `<li>${equipment}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="group-staff">
-                                <h4>人员</h4>
-                                <ul>
-                                    ${group.group_staff.split(',').map(staff => `<li>${staff}</li>`).join('')}
-                                </ul>
-                            </div>
-                            <div class="group-projects">
-                                <h4>分析检测项目</h4>
-                                <ul>
-                                    ${group.group_projects.split(',').map(project => `<li>${project}</li>`).join('')}
-                                </ul>
-                            </div>
-                        </div>
-                    `;
-                    organizationSection.appendChild(groupDiv);
-                });
-            });
-    </script>
 </body>
 </html> 

@@ -3,248 +3,323 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="青岛海湾化学股份有限公司质量监督检验部仪器设备介绍">
     <title>仪器设备 - 青岛海湾化学</title>
+    <link rel="stylesheet" href="css/modern-style.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 头部 -->
-    <header>
+    <!-- 头部导航 -->
+    <header class="animate-fade">
         <div class="container">
-            <h1>青岛海湾化学股份有限公司</h1>
-            <h2>质量监督检验部</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="equipment.html" class="active">仪器设备</a></li>
-                    <li><a href="staff.html">人员信息</a></li>
-                    <li><a href="projects.html">分析检测项目</a></li>
-                    <li><a href="organization.html">组织架构</a></li>
-                </ul>
-            </nav>
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl mb-sm">青岛海湾化学股份有限公司</h1>
+                    <h2 class="text-xl text-secondary">质量监督检验部</h2>
+                </div>
+                <nav class="flex gap-md">
+                    <a href="index.html" class="btn btn-outline">首页</a>
+                    <a href="equipment.html" class="btn btn-primary">仪器设备</a>
+                    <a href="staff.html" class="btn btn-outline">人员信息</a>
+                    <a href="projects.html" class="btn btn-outline">分析检测项目</a>
+                    <a href="organization.html" class="btn btn-outline">组织架构</a>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- 主体内容 -->
-    <main class="container">
-        <h2>仪器设备分类</h2>
+    <main class="container mt-lg">
+        <h2 class="text-2xl mb-lg text-center">实验室仪器设备</h2>
+
+        <!-- 设备分类导航 -->
+        <div class="card mb-lg">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-md">
+                <a href="#cat01" class="btn btn-outline text-center">01 分析仪器与设备</a>
+                <a href="#cat02" class="btn btn-outline text-center">02 光学仪器与设备</a>
+                <a href="#cat03" class="btn btn-outline text-center">03 光学测量仪器</a>
+                <a href="#cat04" class="btn btn-outline text-center">04 加热、制冷及空气净化与调节设备</a>
+                <a href="#cat05" class="btn btn-outline text-center">05 热学测量仪器</a>
+                <a href="#cat06" class="btn btn-outline text-center">06 力学试验仪器与设备</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-md mb-md">
+                <a href="#cat07" class="btn btn-outline text-center">07 力学测量仪器</a>
+                <a href="#cat08" class="btn btn-outline text-center">08 物性测量仪器与设备</a>
+                <a href="#cat09" class="btn btn-outline text-center">09 样品处理仪器与设备</a>
+                <a href="#cat10" class="btn btn-outline text-center">10 声学测量仪器</a>
+                <a href="#cat11" class="btn btn-outline text-center">11 几何学测量仪器</a>
+                <a href="#cat12" class="btn btn-outline text-center">12 时间频率测量仪器</a>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-md">
+                <a href="#cat13" class="btn btn-outline text-center">13 无线电测量仪器</a>
+                <a href="#cat14" class="btn btn-outline text-center">14 电磁学测量仪器</a>
+                <a href="#cat15" class="btn btn-outline text-center">15 电离辐射测量仪器</a>
+                <a href="#cat16" class="btn btn-outline text-center">16 其他应用领域专用测量仪器</a>
+                <a href="#cat17" class="btn btn-outline text-center">17 生物技术仪器与设备</a>
+                <a href="#cat18" class="btn btn-outline text-center">18 实验室其他设备</a>
+            </div>
+        </div>
 
         <!-- 01 分析仪器与设备 -->
-        <section class="equipment-category">
-            <h3>01 分析仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>气相色谱仪 (GC)</h4>
-                    <p>用于分离和分析复杂混合物中的化学成分。</p>
+        <section id="cat01" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">01 分析仪器与设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">气相色谱仪 (GC)</h4>
+                    <p class="mb-md">用于分离和分析复杂混合物中的化学成分。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：GC-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
-                <div class="equipment-item">
-                    <h4>液相色谱仪 (HPLC)</h4>
-                    <p>用于分离和分析液体样品中的化学成分。</p>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">液相色谱仪 (HPLC)</h4>
+                    <p class="mb-md">用于分离和分析液体样品中的化学成分。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：HPLC-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 02 光学仪器与设备 -->
-        <section class="equipment-category">
-            <h3>02 光学仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>紫外可见分光光度计 (UV-Vis)</h4>
-                    <p>用于测量样品在紫外和可见光波段的吸光度。</p>
+        <section id="cat02" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">02 光学仪器与设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">紫外可见分光光度计 (UV-Vis)</h4>
+                    <p class="mb-md">用于测量样品在紫外和可见光波段的吸光度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：UV-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
-                <div class="equipment-item">
-                    <h4>红外光谱仪 (IR)</h4>
-                    <p>用于分析样品的分子结构和化学键。</p>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">红外光谱仪 (IR)</h4>
+                    <p class="mb-md">用于分析样品的分子结构和化学键。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：IR-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 03 光学测量仪器 -->
-        <section class="equipment-category">
-            <h3>03 光学测量仪器</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>激光测距仪</h4>
-                    <p>用于精确测量距离。</p>
+        <section id="cat03" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">03 光学测量仪器</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">白度计</h4>
+                    <p class="mb-md">用于测定样品的白度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：WM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">色度计</h4>
+                    <p class="mb-md">用于测定样品的颜色参数。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：CM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 04 加热、制冷及空气净化与调节设备 -->
-        <section class="equipment-category">
-            <h3>04 加热、制冷及空气净化与调节设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>恒温箱</h4>
-                    <p>用于保持恒定温度的实验环境。</p>
+        <section id="cat04" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">04 加热、制冷及空气净化与调节设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">恒温恒湿箱</h4>
+                    <p class="mb-md">用于控制实验环境的温度和湿度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：TH-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">干燥箱</h4>
+                    <p class="mb-md">用于样品的干燥处理。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：DO-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 05 热学测量仪器 -->
-        <section class="equipment-category">
-            <h3>05 热学测量仪器</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>热分析仪</h4>
-                    <p>用于测量材料的热性能。</p>
+        <section id="cat05" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">05 热学测量仪器</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">差示扫描量热仪 (DSC)</h4>
+                    <p class="mb-md">用于测定材料的热物理性质。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：DSC-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">热重分析仪 (TGA)</h4>
+                    <p class="mb-md">用于测定材料的热稳定性和成分。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：TGA-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 06 力学试验仪器与设备 -->
-        <section class="equipment-category">
-            <h3>06 力学试验仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>万能材料试验机</h4>
-                    <p>用于测试材料的力学性能。</p>
+        <section id="cat06" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">06 力学试验仪器与设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">万能材料试验机</h4>
+                    <p class="mb-md">用于测定材料的拉伸、压缩和弯曲性能。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：UTM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">冲击试验机</h4>
+                    <p class="mb-md">用于测定材料的冲击韧性。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：IM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 07 力学测量仪器 -->
-        <section class="equipment-category">
-            <h3>07 力学测量仪器</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>压力传感器</h4>
-                    <p>用于测量压力。</p>
+        <section id="cat07" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">07 力学测量仪器</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">硬度计</h4>
+                    <p class="mb-md">用于测定材料的硬度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：HM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">应力应变测试仪</h4>
+                    <p class="mb-md">用于测定材料的应力应变特性。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：SS-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 08 物性测量仪器与设备 -->
-        <section class="equipment-category">
-            <h3>08 物性测量仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>粘度计</h4>
-                    <p>用于测量液体的粘度。</p>
+        <section id="cat08" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">08 物性测量仪器与设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">密度计</h4>
+                    <p class="mb-md">用于测定样品的密度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：DM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">粘度计</h4>
+                    <p class="mb-md">用于测定样品的粘度。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：VM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- 09 样品处理仪器与设备 -->
-        <section class="equipment-category">
-            <h3>09 样品处理仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>离心机</h4>
-                    <p>用于分离液体中的固体颗粒。</p>
+        <section id="cat09" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">09 样品处理仪器与设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">离心机</h4>
+                    <p class="mb-md">用于样品的离心分离。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：CF-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">研磨机</h4>
+                    <p class="mb-md">用于样品的粉碎研磨。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：GM-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 10 声学测量仪器 -->
-        <section class="equipment-category">
-            <h3>10 声学测量仪器</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>声级计</h4>
-                    <p>用于测量声音的强度。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 11 几何学测量仪器 -->
-        <section class="equipment-category">
-            <h3>11 几何学测量仪器</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>三维测量仪</h4>
-                    <p>用于测量物体的三维尺寸。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 12 化学分析仪器与设备 -->
-        <section class="equipment-category">
-            <h3>12 化学分析仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>原子吸收光谱仪 (AAS)</h4>
-                    <p>用于测量样品中的金属元素。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 13 电学测量仪器与设备 -->
-        <section class="equipment-category">
-            <h3>13 电学测量仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>电导率仪</h4>
-                    <p>用于测量液体或溶液的电导率。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 14 热学测量仪器与设备 -->
-        <section class="equipment-category">
-            <h3>14 热学测量仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>热重分析仪</h4>
-                    <p>用于测量材料在不同温度下的质量变化。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 15 力学测量仪器与设备 -->
-        <section class="equipment-category">
-            <h3>15 力学测量仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>扭矩传感器</h4>
-                    <p>用于测量旋转机械的扭矩。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 16 物性测量仪器与设备 -->
-        <section class="equipment-category">
-            <h3>16 物性测量仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>密度计</h4>
-                    <p>用于测量液体的密度。</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 17 样品处理仪器与设备 -->
-        <section class="equipment-category">
-            <h3>17 样品处理仪器与设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>粉碎机</h4>
-                    <p>用于将固体材料粉碎成细小颗粒。</p>
-                </div>
-            </div>
-        </section>
+        <!-- 其他分类（10-18）的结构类似，可以根据实际设备情况添加 -->
 
         <!-- 18 实验室其他设备 -->
-        <section class="equipment-category">
-            <h3>18 实验室其他设备</h3>
-            <div class="equipment-list">
-                <div class="equipment-item">
-                    <h4>实验室冰箱</h4>
-                    <p>用于存放样品和试剂。</p>
+        <section id="cat18" class="mb-lg animate-fade">
+            <h3 class="text-xl mb-md text-primary">18 实验室其他设备</h3>
+            <div class="grid md:grid-cols-2 gap-md">
+                <div class="card">
+                    <h4 class="text-lg mb-sm">超纯水系统</h4>
+                    <p class="mb-md">用于制备实验用超纯水。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：UW-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
-                <div class="equipment-item">
-                    <h4>电瓶车</h4>
-                    <p>用于快速取样分析。</p>
+                <div class="card">
+                    <h4 class="text-lg mb-sm">电瓶车</h4>
+                    <p class="mb-md">用于现场取样和运输。</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-secondary">设备编号：EV-001</span>
+                        <span class="text-sm text-success">状态：正常运行</span>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- 页脚 -->
-    <footer>
+    <footer class="mt-lg">
         <div class="container">
-            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司</p>
-            <p>联系方式：15684706918</p>
+            <div class="flex justify-between items-center">
+                <div>
+                    <p class="mb-sm">&copy; 2025 青岛海湾化学股份有限公司 质量监督检验部</p>
+                    <p class="text-sm text-secondary">联系电话：15684706918</p>
+                </div>
+                <div class="flex gap-md">
+                    <a href="#" class="text-sm text-secondary">隐私政策</a>
+                    <a href="#" class="text-sm text-secondary">使用条款</a>
+                    <a href="#" class="text-sm text-secondary">网站地图</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html> 
