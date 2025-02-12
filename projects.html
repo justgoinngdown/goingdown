@@ -3,73 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="青岛海湾化学股份有限公司质量监督检验部分析检测项目">
     <title>分析检测项目 - 青岛海湾化学</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 头部 -->
-    <header>
+    <!-- 头部导航 -->
+    <header class="animate__animated animate__fadeIn">
         <div class="container">
-            <h1>青岛海湾化学股份有限公司</h1>
-            <h2>质量监督检验部</h2>
-            <nav>
-                <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="equipment.html">仪器设备</a></li>
-                    <li><a href="staff.html">人员信息</a></li>
-                    <li><a href="projects.html" class="active">分析检测项目</a></li>
-                    <li><a href="organization.html">组织架构</a></li>
-                </ul>
-            </nav>
+            <div class="header-content">
+                <h1 class="animate__animated animate__fadeInDown">青岛海湾化学股份有限公司</h1>
+                <h2 class="animate__animated animate__fadeInDown animate__delay-1s">质量监督检验部</h2>
+                <nav class="animate__animated animate__fadeInUp animate__delay-1s">
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                        <li><a href="equipment.html"><i class="fas fa-microscope"></i> 仪器设备</a></li>
+                        <li><a href="staff.html"><i class="fas fa-users"></i> 人员信息</a></li>
+                        <li><a href="projects.html" class="active"><i class="fas fa-tasks"></i> 分析检测项目</a></li>
+                        <li><a href="organization.html"><i class="fas fa-sitemap"></i> 组织架构</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
     <!-- 主体内容 -->
     <main class="container">
-        <h2>分析检测项目</h2>
-        
-        <!-- 项目列表 -->
-        <section class="list">
-            <div class="list-item">
-                <h3>氯碱厂中控分析</h3>
-                <p>项目描述：分析氯碱厂生产过程中间控制环节各项分析。</p>
-                <p>分析项目：盐水中NaCL、钙离子、镁离子、硫酸根离子、无机铵、悬浮物等含量的分析。<p>
-                <p>负责人：中控一组</p>
+        <!-- 项目概述 -->
+        <section class="intro card animate__animated animate__fadeInUp">
+            <div class="section-header">
+                <i class="fas fa-flask fa-2x animated-float"></i>
+                <h2>检测项目概述</h2>
             </div>
-            <div class="list-item">
-                <h3>氯乙烯厂中控分析</h3>
-                <p>项目描述：分析VCM厂生产过程中间控制环节各项分析。</p>
-                <p>负责人：中控一组</p>
+            <p class="section-description">我们提供全面的分析检测服务，涵盖化学成分分析、物理性能测试等多个领域。所有检测项目均严格遵循国家标准和行业规范，确保数据的准确性和可靠性。</p>
+        </section>
+
+        <!-- 检测能力统计 -->
+        <section class="statistics animate__animated animate__fadeInUp">
+            <div class="section-header">
+                <i class="fas fa-chart-line fa-2x animated-float"></i>
+                <h2>检测能力</h2>
             </div>
-            <div class="list-item">
-                <h3>PVC分析</h3>
-                <p>项目描述：PVC厂、热电厂、公用工程厂中控及产成品分析。</p>
-                <p>负责人：中控二组</p>
+            <div class="stats-grid">
+                <div class="stat-item animated-float">
+                    <i class="fas fa-vials"></i>
+                    <h4>检测项目</h4>
+                    <p class="stat-value" id="total-projects">0</p>
+                </div>
+                <div class="stat-item animated-float">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>检测标准</h4>
+                    <p class="stat-value" id="total-standards">0</p>
+                </div>
+                <div class="stat-item animated-float">
+                    <i class="fas fa-clock"></i>
+                    <h4>年检测量</h4>
+                    <p class="stat-value" id="annual-tests">0</p>
+                </div>
             </div>
-            <div class="list-item">
-                <h3>苯乙烯分析</h3>
-                <p>项目描述：苯乙烯厂、聚苯乙烯厂中控及产成品分析。</p>
-                <p>负责人：中控三组</p>
+        </section>
+
+        <!-- 主要检测项目 -->
+        <section class="project-categories animate__animated animate__fadeInUp">
+            <div class="section-header">
+                <i class="fas fa-list-alt fa-2x animated-float"></i>
+                <h2>主要检测项目</h2>
             </div>
-            <div class="list-item">
-                <h3>双酚A及环氧分析</h3>
-                <p>项目描述：双酚A厂、树脂厂中控及产成品分析。</p>
-                <p>负责人：中控四组</p>
+            <div class="project-list">
+                <div class="project-item animated-float">
+                    <div class="project-icon">
+                        <i class="fas fa-atom"></i>
+                    </div>
+                    <h3>化学成分分析</h3>
+                    <p>包括各类化学物质的定性定量分析，元素含量测定等。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-flask"></i> 成分分析</span>
+                        <span class="tag"><i class="fas fa-chart-bar"></i> 含量测定</span>
+                        <span class="tag"><i class="fas fa-vial"></i> 杂质检测</span>
+                    </div>
+                </div>
+                <div class="project-item animated-float">
+                    <div class="project-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>物理性能测试</h3>
+                    <p>测试材料的物理特性，包括密度、粘度、强度等参数。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-weight"></i> 密度测定</span>
+                        <span class="tag"><i class="fas fa-tint"></i> 粘度测试</span>
+                        <span class="tag"><i class="fas fa-compress-arrows-alt"></i> 强度测试</span>
+                    </div>
+                </div>
+                <div class="project-item animated-float">
+                    <div class="project-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>环境指标检测</h3>
+                    <p>监测环境相关指标，确保生产过程符合环保要求。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-cloud"></i> 废气检测</span>
+                        <span class="tag"><i class="fas fa-tint"></i> 废水检测</span>
+                        <span class="tag"><i class="fas fa-leaf"></i> 环境监测</span>
+                    </div>
+                </div>
             </div>
-            <div class="list-item">
-                <h3>偏硅酸钠产品分析</h3>
-                <p>项目描述：偏硅酸钠厂中控及产成品分析。</p>
-                <p>负责人：偏硅酸钠分析组</p>
+        </section>
+
+        <!-- 检测流程 -->
+        <section class="process-section animate__animated animate__fadeInUp">
+            <div class="section-header">
+                <i class="fas fa-project-diagram fa-2x animated-float"></i>
+                <h2>检测流程</h2>
+            </div>
+            <div class="list">
+                <div class="list-item animated-float">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>样品接收</h3>
+                    <p>严格的样品接收和登记程序，确保样品的可追溯性。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-check"></i> 身份确认</span>
+                        <span class="tag"><i class="fas fa-qrcode"></i> 编号管理</span>
+                        <span class="tag"><i class="fas fa-archive"></i> 样品保存</span>
+                    </div>
+                </div>
+                <div class="list-item animated-float">
+                    <i class="fas fa-vial"></i>
+                    <h3>样品前处理</h3>
+                    <p>根据检测要求进行样品的预处理，确保检测结果的准确性。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-mortar-pestle"></i> 样品处理</span>
+                        <span class="tag"><i class="fas fa-vials"></i> 试剂配制</span>
+                        <span class="tag"><i class="fas fa-temperature-high"></i> 环境控制</span>
+                    </div>
+                </div>
+                <div class="list-item animated-float">
+                    <i class="fas fa-microscope"></i>
+                    <h3>检测分析</h3>
+                    <p>使用先进的仪器设备进行检测分析，确保数据准确可靠。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-chart-line"></i> 数据采集</span>
+                        <span class="tag"><i class="fas fa-calculator"></i> 结果计算</span>
+                        <span class="tag"><i class="fas fa-check-double"></i> 复核验证</span>
+                    </div>
+                </div>
+                <div class="list-item animated-float">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>报告出具</h3>
+                    <p>规范的检测报告编制和审核流程，确保报告的准确性和权威性。</p>
+                    <div class="feature-tags">
+                        <span class="tag"><i class="fas fa-edit"></i> 报告编制</span>
+                        <span class="tag"><i class="fas fa-user-check"></i> 审核签发</span>
+                        <span class="tag"><i class="fas fa-archive"></i> 档案管理</span>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- 页脚 -->
-    <footer>
+    <footer class="animate__animated animate__fadeIn">
         <div class="container">
-            <p>版权所有 &copy; 2025 青岛海湾化学股份有限公司</p>
-            <p>联系方式：15684706918</p>
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p><i class="far fa-copyright"></i> 2025 青岛海湾化学股份有限公司 质量监督检验部</p>
+                    <p><i class="fas fa-phone"></i> 联系电话：15684706918</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址：青岛市黄岛区</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fas fa-shield-alt"></i> 隐私政策</a>
+                    <a href="#"><i class="fas fa-file-contract"></i> 使用条款</a>
+                    <a href="#"><i class="fas fa-sitemap"></i> 网站地图</a>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // 监听元素进入视口
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        // 添加滚动动画
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // 数字增长动画
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // 获取检测项目统计数据
+        fetch('php/get_project_stats.php')
+            .then(response => response.json())
+            .then(data => {
+                // 更新统计数据
+                const stats = {
+                    'total-projects': data.totalProjects || 0,
+                    'total-standards': data.totalStandards || 0,
+                    'annual-tests': data.annualTests || 0
+                };
+
+                Object.entries(stats).forEach(([id, value]) => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        animateValue(element, 0, value, 2000);
+                    }
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html> 
