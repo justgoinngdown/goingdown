@@ -4,7 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理系统</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- 添加必要的样式和脚本 -->
+    <link href="https://unpkg.com/@staticcms/app/dist/main.css" rel="stylesheet">
+    <script src="https://unpkg.com/@staticcms/app/dist/static-cms-app.js"></script>
     <style>
         /* 自定义样式 */
         .css-1gj57a0-SidebarContainer-card {
@@ -28,19 +30,58 @@
 </head>
 <body>
     <script>
-        // 自定义预览样式
-        CMS.registerPreviewStyle('/css/style.css');
+        window.CMS_MANUAL_INIT = true;
         
-        // 配置中文界面
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
+        // 初始化CMS
+        window.initCMS = function() {
+            CMS.init({
+                config: {
+                    backend: {
+                        name: 'github',
+                        repo: 'justgoinngdown/goingdown',
+                        branch: 'main',
+                        base_url: 'https://api.github.com',
+                        auth_endpoint: 'auth',
+                        client_id: 'Ov23li8JXB5JlZkc0mNj',
+                    },
+                    media_folder: 'images/uploads',
+                    public_folder: '/images/uploads',
+                    locale: 'zh_CN',
+                    collections: [
+                        {
+                            name: 'equipment',
+                            label: '设备',
+                            folder: '_equipment',
+                            create: true,
+                            fields: [
+                                { label: '名称', name: 'title', widget: 'string' },
+                                { label: '分类', name: 'category', widget: 'select', options: ['分析仪器', '光学仪器', '测量仪器', '其他设备'] },
+                                { label: '描述', name: 'description', widget: 'text' },
+                                { label: '图片', name: 'image', widget: 'image', required: false },
+                                { label: '特点', name: 'features', widget: 'list' }
+                            ]
+                        },
+                        {
+                            name: 'staff',
+                            label: '人员',
+                            folder: '_staff',
+                            create: true,
+                            fields: [
+                                { label: '姓名', name: 'name', widget: 'string' },
+                                { label: '职位', name: 'position', widget: 'string' },
+                                { label: '简介', name: 'bio', widget: 'text' },
+                                { label: '照片', name: 'photo', widget: 'image', required: false }
+                            ]
+                        }
+                    ]
                 }
             });
-        }
+        };
+
+        // 加载完成后初始化
+        window.addEventListener('load', function() {
+            initCMS();
+        });
     </script>
 </body>
 </html> 
