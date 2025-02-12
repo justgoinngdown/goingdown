@@ -4,14 +4,72 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理系统</title>
+    <!-- TinaCMS 样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tinacms@1.5.28/dist/tina.css" />
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #tina-root {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <!-- 加载Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <!-- 加载配置文件 -->
+    <div id="tina-root"></div>
+    <!-- TinaCMS 脚本 -->
+    <script src="https://cdn.jsdelivr.net/npm/tinacms@1.5.28/dist/tina.umd.min.js"></script>
     <script>
-        // 配置CMS
-        window.CMS.init();
+        const client = new tina.Client({
+            clientId: 'Ov23li8JXB5JlZkc0mNj',
+            branch: 'main',
+            tokenStorage: 'LOCAL_STORAGE',
+            isLocalClient: false,
+            mediaRoot: 'images/uploads',
+            schema: {
+                collections: [
+                    {
+                        label: '设备',
+                        name: 'equipment',
+                        path: '_equipment',
+                        format: 'md',
+                        fields: [
+                            { label: '名称', name: 'title', type: 'string' },
+                            { 
+                                label: '分类', 
+                                name: 'category', 
+                                type: 'string',
+                                options: ['分析仪器', '光学仪器', '测量仪器', '其他设备']
+                            },
+                            { label: '描述', name: 'description', type: 'string', ui: { component: 'textarea' } },
+                            { label: '图片', name: 'image', type: 'image' },
+                            { label: '特点', name: 'features', type: 'string', list: true }
+                        ]
+                    },
+                    {
+                        label: '人员',
+                        name: 'staff',
+                        path: '_staff',
+                        format: 'md',
+                        fields: [
+                            { label: '姓名', name: 'name', type: 'string' },
+                            { label: '职位', name: 'position', type: 'string' },
+                            { label: '简介', name: 'bio', type: 'string', ui: { component: 'textarea' } },
+                            { label: '照片', name: 'photo', type: 'image' }
+                        ]
+                    }
+                ]
+            }
+        });
+
+        // 初始化编辑器
+        tina.init({
+            client,
+            enabled: true,
+            sidebar: true
+        });
     </script>
 </body>
 </html> 
