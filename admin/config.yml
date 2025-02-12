@@ -2,14 +2,13 @@ backend:
   name: github
   repo: justgoinngdown/goingdown
   branch: main
-  client_id: Ov23li8JXB5JlZkc0mNj # GitHub OAuth Client ID
-  auth_scope: repo,user # GitHub OAuth权限范围
+  base_url: https://api.github.com
+  auth_endpoint: login/oauth/authorize
+  client_id: Ov23li8JXB5JlZkc0mNj
 
-media_folder: "images/uploads" # 媒体文件存储位置
-public_folder: "/images/uploads" # 公共访问路径
-
-# 本地化设置
-locale: 'zh_CN'
+media_folder: images/uploads
+public_folder: /images/uploads
+locale: zh_CN
 
 # 编辑器设置
 editor:
@@ -66,13 +65,17 @@ collections:
         file: "_data/home.yml"
         fields:
           - {label: "部门简介", name: "intro", widget: "text"}
-          - {label: "服务亮点", name: "highlights", widget: "list", fields: [
-              {label: "标题", name: "title", widget: "string"},
-              {label: "描述", name: "description", widget: "text"},
-              {label: "图标", name: "icon", widget: "string"}
-            ]}
-          - {label: "统计数据", name: "statistics", widget: "object", fields: [
-              {label: "设备数量", name: "equipment", widget: "number"},
-              {label: "人员数量", name: "staff", widget: "number"},
-              {label: "项目数量", name: "projects", widget: "number"}
-            ]} 
+          - label: "服务亮点"
+            name: "highlights"
+            widget: "list"
+            fields:
+              - {label: "标题", name: "title", widget: "string"}
+              - {label: "描述", name: "description", widget: "text"}
+              - {label: "图标", name: "icon", widget: "string"}
+          - label: "统计数据"
+            name: "statistics"
+            widget: "object"
+            fields:
+              - {label: "设备数量", name: "equipment", widget: "number"}
+              - {label: "人员数量", name: "staff", widget: "number"}
+              - {label: "项目数量", name: "projects", widget: "number"} 

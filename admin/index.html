@@ -4,72 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理系统</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    <style>
-        /* 自定义样式 */
-        .css-1gj57a0-SidebarContainer-card {
-            background-color: #f8f9fa;
-        }
-        .css-v758ki-AppMainContainer {
-            margin-top: 0;
-            max-width: 100%;
-        }
-        .css-12b66la-AppHeaderContent {
-            padding: 20px;
-        }
-        .css-104dqk8-AppHeaderButton {
-            background-color: #007bff;
-            color: white;
-        }
-        .css-104dqk8-AppHeaderButton:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
+    <!-- 加载Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- 加载配置文件 -->
     <script>
-        CMS.init({
-            config: {
-                backend: {
-                    name: 'github',
-                    repo: 'justgoinngdown/goingdown',
-                    branch: 'main',
-                    client_id: 'Ov23li8JXB5JlZkc0mNj',
-                    auth_type: 'implicit',
-                    site_domain: 'justgoinngdown.github.io'
-                },
-                media_folder: 'images/uploads',
-                public_folder: '/images/uploads',
-                locale: 'zh_CN',
-                collections: [
-                    {
-                        name: 'equipment',
-                        label: '设备',
-                        folder: '_equipment',
-                        create: true,
-                        fields: [
-                            { label: '名称', name: 'title', widget: 'string' },
-                            { label: '分类', name: 'category', widget: 'select', options: ['分析仪器', '光学仪器', '测量仪器', '其他设备'] },
-                            { label: '描述', name: 'description', widget: 'text' },
-                            { label: '图片', name: 'image', widget: 'image', required: false },
-                            { label: '特点', name: 'features', widget: 'list' }
-                        ]
-                    },
-                    {
-                        name: 'staff',
-                        label: '人员',
-                        folder: '_staff',
-                        create: true,
-                        fields: [
-                            { label: '姓名', name: 'name', widget: 'string' },
-                            { label: '职位', name: 'position', widget: 'string' },
-                            { label: '简介', name: 'bio', widget: 'text' },
-                            { label: '照片', name: 'photo', widget: 'image', required: false }
-                        ]
-                    }
-                ]
-            }
-        });
+        // 配置CMS
+        window.CMS.init();
     </script>
 </body>
 </html> 
