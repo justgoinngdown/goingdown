@@ -1,0 +1,17 @@
+intro: |
+  质量监督检验部是青岛海湾化学股份有限公司的核心技术部门，主要承担公司各类产品的质量检验工作。
+  部门秉承"精益求精、追求卓越"的理念，配备先进的检测设备，建立完善的质量管理体系。
+  实验室已通过ISO/IEC 17025认证，检测能力获得国家认可。
+
+highlights:
+  - title: 设备先进
+    description: 配备最新的分析仪器，确保检测精度和效率
+    icon: fas fa-microscope
+
+  - title: 团队专业
+    description: 技术人员均经过严格培训，具备丰富的行业经验
+    icon: fas fa-user-graduate
+
+  - title: 响应快速
+    description: 建立高效的工作流程，确保及时完成生产分析任务
+    icon: fas fa-tachometer-alt 
