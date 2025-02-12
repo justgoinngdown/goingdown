@@ -14,4 +14,9 @@ highlights:
 
   - title: 响应快速
     description: 建立高效的工作流程，确保及时完成生产分析任务
-    icon: fas fa-tachometer-alt 
+    icon: fas fa-tachometer-alt
+
+statistics:
+  equipment: 50
+  staff: 30
+  projects: 100 

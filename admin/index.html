@@ -4,11 +4,43 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>内容管理系统</title>
-    <!-- Netlify Identity Widget -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <style>
+        /* 自定义样式 */
+        .css-1gj57a0-SidebarContainer-card {
+            background-color: #f8f9fa;
+        }
+        .css-v758ki-AppMainContainer {
+            margin-top: 0;
+            max-width: 100%;
+        }
+        .css-12b66la-AppHeaderContent {
+            padding: 20px;
+        }
+        .css-104dqk8-AppHeaderButton {
+            background-color: #007bff;
+            color: white;
+        }
+        .css-104dqk8-AppHeaderButton:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <!-- Netlify CMS -->
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script>
+        // 自定义预览样式
+        CMS.registerPreviewStyle('/css/style.css');
+        
+        // 配置中文界面
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html> 

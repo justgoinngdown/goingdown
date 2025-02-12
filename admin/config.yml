@@ -1,42 +1,62 @@
 backend:
   name: github
   repo: justgoinngdown/goingdown
-  branch: main # 默认分支
+  branch: main
+  client_id: Ov23li8JXB5JlZkc0mNj # GitHub OAuth Client ID
+  auth_scope: repo,user # GitHub OAuth权限范围
 
 media_folder: "images/uploads" # 媒体文件存储位置
 public_folder: "/images/uploads" # 公共访问路径
+
+# 本地化设置
+locale: 'zh_CN'
+
+# 编辑器设置
+editor:
+  preview: true
 
 collections:
   - name: "equipment" # 设备管理
     label: "设备"
     folder: "_equipment"
     create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "名称", name: "title", widget: "string"}
       - {label: "分类", name: "category", widget: "select", options: ["分析仪器", "光学仪器", "测量仪器", "其他设备"]}
       - {label: "描述", name: "description", widget: "text"}
       - {label: "图片", name: "image", widget: "image", required: false}
       - {label: "特点", name: "features", widget: "list"}
+      - {label: "发布日期", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss"}
       
   - name: "staff" # 人员管理
     label: "人员"
     folder: "_staff"
     create: true
+    slug: "{{slug}}"
     fields:
       - {label: "姓名", name: "name", widget: "string"}
       - {label: "职位", name: "position", widget: "string"}
       - {label: "简介", name: "bio", widget: "text"}
       - {label: "照片", name: "photo", widget: "image", required: false}
+      - {label: "专业资质", name: "qualifications", widget: "list", required: false}
+      - {label: "联系方式", name: "contact", widget: "object", fields: [
+          {label: "邮箱", name: "email", widget: "string", required: false},
+          {label: "电话", name: "phone", widget: "string", required: false}
+        ]}
       
   - name: "projects" # 项目管理
     label: "检测项目"
     folder: "_projects"
     create: true
+    slug: "{{slug}}"
     fields:
       - {label: "项目名称", name: "title", widget: "string"}
       - {label: "项目类型", name: "type", widget: "select", options: ["化学分析", "物理测试", "环境监测"]}
       - {label: "项目描述", name: "description", widget: "text"}
       - {label: "检测标准", name: "standard", widget: "string"}
+      - {label: "检测周期", name: "cycle", widget: "string"}
+      - {label: "检测费用", name: "cost", widget: "string", required: false}
       
   - name: "pages" # 页面内容管理
     label: "页面"
@@ -50,4 +70,9 @@ collections:
               {label: "标题", name: "title", widget: "string"},
               {label: "描述", name: "description", widget: "text"},
               {label: "图标", name: "icon", widget: "string"}
+            ]}
+          - {label: "统计数据", name: "statistics", widget: "object", fields: [
+              {label: "设备数量", name: "equipment", widget: "number"},
+              {label: "人员数量", name: "staff", widget: "number"},
+              {label: "项目数量", name: "projects", widget: "number"}
             ]} 
