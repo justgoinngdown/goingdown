@@ -1,0 +1,4 @@
+user.name=justgoingdwon
+user.email=741074996@qq.com
+http.proxy=http://127.0.0.1:7890
+https.proxy=https://127.0.0.1:7890

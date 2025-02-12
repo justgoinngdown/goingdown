@@ -1,0 +1,20 @@
+{
+    "total": 32,
+    "averageAge": 35,
+    "highEducationRate": 68,
+    "gender": {
+        "male": 18,
+        "female": 14
+    },
+    "education": {
+        "bachelor": 15,
+        "master": 12,
+        "doctor": 5
+    },
+    "age": {
+        "twenties": 8,
+        "thirties": 12,
+        "forties": 8,
+        "fifties": 4
+    }
+} 
