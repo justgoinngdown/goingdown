@@ -47,7 +47,7 @@ function animateNumber(element, start, end, duration) {
 // 加载党建数据
 async function loadPartyData() {
     try {
-        const response = await fetch('/_data/party/page.json');
+        const response = await fetch('/data/party/page.json');
         const data = await response.json();
 
         // 更新页面标题和描述
@@ -56,7 +56,25 @@ async function loadPartyData() {
         updateSections(data);
     } catch (error) {
         console.error('加载党建数据失败:', error);
+        // 显示错误提示
+        showErrorMessage();
     }
+}
+
+// 显示错误提示
+function showErrorMessage() {
+    const sections = ['news-grid', 'organization-chart', 'education-content', 'activities-grid', 'achievements-grid'];
+    sections.forEach(sectionClass => {
+        const element = document.querySelector('.' + sectionClass);
+        if (element) {
+            element.innerHTML = `
+                <div class="error-message" style="text-align: center; padding: 2rem;">
+                    <i class="fas fa-exclamation-circle" style="color: #c7000b; font-size: 2rem;"></i>
+                    <p style="margin-top: 1rem; color: #666;">数据加载失败，请稍后重试</p>
+                </div>
+            `;
+        }
+    });
 }
 
 // 更新页面头部信息
@@ -89,7 +107,7 @@ function updateNewsSection(newsData) {
 
     newsGrid.innerHTML = newsData.items.map(news => `
         <article class="news-item animate__animated animate__fadeIn">
-            <img src="${news.image}" alt="${news.title}" class="news-image">
+            <img src="${news.image}" alt="${news.title}" class="news-image" onerror="this.onerror=null; this.src='/images/party/default.svg';">
             <div class="news-content">
                 <h3 class="news-title">${news.title}</h3>
                 <p class="news-date">${news.date}</p>
@@ -152,7 +170,7 @@ function updateActivitiesSection(activitiesData) {
 
     activitiesGrid.innerHTML = activitiesData.items.map(activity => `
         <div class="activity-item animate__animated animate__fadeIn">
-            <img src="${activity.image}" alt="${activity.title}" class="activity-image">
+            <img src="${activity.image}" alt="${activity.title}" class="activity-image" onerror="this.onerror=null; this.src='/images/party/default.svg';">
             <div class="activity-content">
                 <h3 class="activity-title">${activity.title}</h3>
                 <p class="activity-date">${activity.date}</p>

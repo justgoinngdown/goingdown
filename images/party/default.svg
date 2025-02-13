@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="400" fill="#f5f5f5"/>
+    <!-- 默认图标 -->
+    <circle cx="400" cy="200" r="80" fill="#c7000b"/>
+    <text x="400" y="220" text-anchor="middle" fill="white" font-size="24" font-family="Arial, sans-serif">
+        党建活动
+    </text>
+</svg> 

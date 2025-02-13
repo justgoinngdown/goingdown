@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景 -->
+    <rect width="800" height="400" fill="#f5f5f5"/>
+    <!-- 志愿者图案 -->
+    <circle cx="400" cy="150" r="50" fill="#c7000b"/>
+    <path d="M350 250 Q400 300 450 250" stroke="#c7000b" stroke-width="10" fill="none"/>
+    <text x="400" y="220" text-anchor="middle" fill="white" font-size="24" font-family="Arial, sans-serif">
+        志愿服务
+    </text>
+    <text x="400" y="280" text-anchor="middle" fill="#666" font-size="16" font-family="Arial, sans-serif">
+        党员志愿服务活动
+    </text>
+</svg> 
