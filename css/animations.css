@@ -1,0 +1,235 @@
+/* 自定义动画效果 */
+
+/* 渐入动画 */
+@keyframes fadeScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* 上浮动画 */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 脉冲动画 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+}
+
+/* 摇晃动画 */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* 旋转进入 */
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+/* 弹跳动画 */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+/* 闪光效果 */
+@keyframes shine {
+    from {
+        background-position: -200% center;
+    }
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* 3D翻转 */
+@keyframes flip {
+    0% {
+        transform: perspective(400px) rotateY(0);
+    }
+    100% {
+        transform: perspective(400px) rotateY(180deg);
+    }
+}
+
+/* 波纹效果 */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* 打字机效果 */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* 应用类 */
+.animate-fadeScale {
+    animation: fadeScale 0.5s ease-out;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.animate-rotateIn {
+    animation: rotateIn 0.8s ease-out;
+}
+
+.animate-bounce {
+    animation: bounce 2s infinite;
+}
+
+.animate-shine {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shine 1.5s infinite;
+}
+
+.animate-flip {
+    backface-visibility: visible;
+    transform-style: preserve-3d;
+    animation: flip 0.6s ease-out;
+}
+
+.animate-ripple {
+    position: relative;
+    overflow: hidden;
+}
+
+.animate-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 1s linear infinite;
+}
+
+.animate-typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid;
+    animation: typing 3.5s steps(40, end),
+               blink-caret .75s step-end infinite;
+}
+
+/* 悬停效果 */
+.hover-grow {
+    transition: transform 0.3s ease;
+}
+
+.hover-grow:hover {
+    transform: scale(1.05);
+}
+
+.hover-float {
+    transition: transform 0.3s ease;
+}
+
+.hover-float:hover {
+    transform: translateY(-5px);
+}
+
+.hover-glow {
+    transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.5);
+}
+
+/* 滚动动画 */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 加载动画 */
+.loading-dots::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60% { content: '...'; }
+    80%, 100% { content: ''; }
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+    .animate-float,
+    .animate-pulse,
+    .animate-bounce {
+        animation: none; /* 在移动端禁用一些可能影响性能的动画 */
+    }
+    
+    .hover-grow,
+    .hover-float,
+    .hover-glow {
+        transform: none !important; /* 在移动端禁用悬停效果 */
+        box-shadow: none !important;
+    }
+} 
