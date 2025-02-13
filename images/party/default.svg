@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
     <!-- 背景 -->
-    <rect width="800" height="400" fill="#f5f5f5"/>
-    <!-- 默认图标 -->
-    <circle cx="400" cy="200" r="80" fill="#c7000b"/>
-    <text x="400" y="220" text-anchor="middle" fill="white" font-size="24" font-family="Arial, sans-serif">
+    <rect width="400" height="300" fill="#f5f5f5"/>
+    
+    <!-- 党徽图案 -->
+    <circle cx="200" cy="150" r="80" fill="#c7000b"/>
+    <path d="M200 70 L200 230 M140 150 L260 150" stroke="#fff" stroke-width="15"/>
+    
+    <!-- 文字 -->
+    <text x="200" y="280" text-anchor="middle" font-family="Microsoft YaHei, sans-serif" font-size="24" fill="#333">
         党建活动
     </text>
 </svg> 
