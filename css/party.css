@@ -19,8 +19,8 @@
 
 /* 页面头部样式 */
 .page-header {
-    background-color: var(--party-primary);
-    color: var(--party-light);
+    background: linear-gradient(135deg, #c7000b 0%, #e60012 100%);
+    color: #fff;
     padding: 3rem 0;
     text-align: center;
     margin-bottom: 2rem;
@@ -29,35 +29,34 @@
 .page-header h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
-    animation: fadeInDown 1s ease-out;
+    font-weight: bold;
 }
 
 .page-header .description {
     font-size: 1.2rem;
     opacity: 0.9;
-    animation: fadeInUp 1s ease-out;
 }
 
 /* 统计数据样式 */
 .statistics {
+    background-color: #fff;
     padding: 2rem 0;
-    background-color: var(--party-secondary);
-    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 1rem;
+    padding: 2rem 0;
 }
 
 .stat-item {
-    background-color: var(--party-light);
-    padding: 2rem;
-    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px var(--party-shadow);
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -66,20 +65,26 @@
 }
 
 .stat-item i {
-    color: var(--party-primary);
     font-size: 2.5rem;
+    color: #c7000b;
     margin-bottom: 1rem;
+}
+
+.stat-item h4 {
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 
 .stat-value {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--party-primary);
-    margin: 1rem 0;
+    color: #c7000b;
+    margin: 0.5rem 0;
 }
 
 .stat-label {
-    color: var(--party-text);
+    color: #666;
     font-size: 1rem;
 }
 
@@ -117,14 +122,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 1rem;
+    margin: 2rem 0;
 }
 
 .news-item {
-    background-color: var(--party-light);
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px var(--party-shadow);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -142,22 +147,44 @@
     padding: 1.5rem;
 }
 
-.news-title {
+.news-content h3 {
     font-size: 1.2rem;
-    color: var(--party-text);
-    margin-bottom: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .news-date {
     color: #666;
     font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.news-summary {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.news-link {
+    display: inline-block;
+    color: #c7000b;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.news-link:hover {
+    color: #e60012;
 }
 
 /* 组织架构样式 */
 .organization-chart {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 800px;
+    margin: 2rem auto;
     padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .org-level {
@@ -181,20 +208,42 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 1rem;
+    margin: 2rem 0;
 }
 
 .education-item {
-    background-color: var(--party-light);
-    border-radius: 10px;
+    background: #fff;
     padding: 2rem;
-    box-shadow: 0 2px 4px var(--party-shadow);
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
-.education-title {
-    font-size: 1.2rem;
-    color: var(--party-primary);
+.education-item h3 {
+    color: #333;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+}
+
+.education-item .description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.resource-list {
+    list-style: none;
+    padding: 0;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.resource-item i {
+    color: #c7000b;
+    margin-right: 0.5rem;
 }
 
 /* 活动展示样式 */
@@ -202,14 +251,19 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    padding: 1rem;
+    margin: 2rem 0;
 }
 
 .activity-item {
-    background-color: var(--party-light);
-    border-radius: 10px;
+    background: #fff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px var(--party-shadow);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.activity-item:hover {
+    transform: translateY(-5px);
 }
 
 .activity-image {
@@ -222,31 +276,37 @@
     padding: 1.5rem;
 }
 
-.activity-title {
+.activity-content h3 {
     font-size: 1.2rem;
-    color: var(--party-text);
-    margin-bottom: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .activity-date {
     color: #666;
     font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.activity-description {
+    color: #444;
+    line-height: 1.6;
 }
 
 /* 党建成果样式 */
 .achievements-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    padding: 1rem;
+    margin: 2rem 0;
 }
 
 .achievement-item {
-    background-color: var(--party-light);
-    border-radius: 10px;
+    background: #fff;
     padding: 2rem;
     text-align: center;
-    box-shadow: 0 2px 4px var(--party-shadow);
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -254,21 +314,21 @@
     transform: translateY(-5px);
 }
 
-.achievement-icon {
-    color: var(--party-primary);
+.achievement-item i {
     font-size: 2.5rem;
+    color: #c7000b;
     margin-bottom: 1rem;
 }
 
-.achievement-title {
+.achievement-item h3 {
+    color: #333;
     font-size: 1.2rem;
-    color: var(--party-text);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.achievement-description {
+.achievement-item p {
     color: #666;
-    font-size: 1rem;
+    line-height: 1.6;
 }
 
 /* 动画效果 */
@@ -288,34 +348,54 @@
     }
 }
 
-/* 响应式布局调整 */
-@media screen and (max-width: 768px) {
+/* 响应式设计 */
+@media (max-width: 768px) {
     .page-header h1 {
         font-size: 2rem;
     }
-
-    .section-title {
-        font-size: 1.5rem;
+    
+    .page-header .description {
+        font-size: 1rem;
     }
-
+    
     .stats-grid {
         grid-template-columns: 1fr;
     }
-
+    
     .news-grid,
-    .education-content,
     .activities-grid,
+    .education-content,
     .achievements-grid {
         grid-template-columns: 1fr;
     }
-
-    .org-level {
-        flex-direction: column;
+    
+    .stat-item,
+    .news-item,
+    .activity-item,
+    .education-item,
+    .achievement-item {
+        margin-bottom: 1rem;
     }
+}
 
-    .org-item {
-        margin: 0.5rem 0;
-    }
+/* 错误提示样式 */
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.error-message i {
+    font-size: 2.5rem;
+    color: #c7000b;
+    margin-bottom: 1rem;
+}
+
+.error-message p {
+    color: #666;
+    font-size: 1.1rem;
 }
 
 /* 交互效果 */
