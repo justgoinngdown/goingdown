@@ -1,0 +1,345 @@
+/* 党建页面主题色定义 */
+:root {
+    --party-primary: #c7000b;
+    --party-secondary: #ffebee;
+    --party-accent: #ff4d4f;
+    --party-text: #333333;
+    --party-light: #ffffff;
+    --party-dark: #1a1a1a;
+    --party-border: #e8e8e8;
+    --party-hover: #ff7875;
+    --party-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* 页面整体样式 */
+.main-content {
+    padding: 2rem 0;
+    background-color: var(--party-light);
+}
+
+/* 页面头部样式 */
+.page-header {
+    background-color: var(--party-primary);
+    color: var(--party-light);
+    padding: 3rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.page-header .description {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* 统计数据样式 */
+.statistics {
+    padding: 2rem 0;
+    background-color: var(--party-secondary);
+    margin-bottom: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.stat-item {
+    background-color: var(--party-light);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px var(--party-shadow);
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-item i {
+    color: var(--party-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--party-primary);
+    margin: 1rem 0;
+}
+
+.stat-label {
+    color: var(--party-text);
+    font-size: 1rem;
+}
+
+/* 部分标题样式 */
+.section {
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-header i {
+    color: var(--party-primary);
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--party-text);
+    margin-bottom: 1rem;
+}
+
+.section-description {
+    color: #666;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 新闻网格样式 */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.news-item {
+    background-color: var(--party-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--party-shadow);
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+}
+
+.news-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-title {
+    font-size: 1.2rem;
+    color: var(--party-text);
+    margin-bottom: 1rem;
+}
+
+.news-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 组织架构样式 */
+.organization-chart {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.org-level {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.org-item {
+    background-color: var(--party-primary);
+    color: var(--party-light);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    margin: 0 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px var(--party-shadow);
+}
+
+/* 党员教育样式 */
+.education-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.education-item {
+    background-color: var(--party-light);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px var(--party-shadow);
+}
+
+.education-title {
+    font-size: 1.2rem;
+    color: var(--party-primary);
+    margin-bottom: 1rem;
+}
+
+/* 活动展示样式 */
+.activities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.activity-item {
+    background-color: var(--party-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px var(--party-shadow);
+}
+
+.activity-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.activity-content {
+    padding: 1.5rem;
+}
+
+.activity-title {
+    font-size: 1.2rem;
+    color: var(--party-text);
+    margin-bottom: 1rem;
+}
+
+.activity-date {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* 党建成果样式 */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.achievement-item {
+    background-color: var(--party-light);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px var(--party-shadow);
+    transition: transform 0.3s ease;
+}
+
+.achievement-item:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-icon {
+    color: var(--party-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.achievement-title {
+    font-size: 1.2rem;
+    color: var(--party-text);
+    margin-bottom: 1rem;
+}
+
+.achievement-description {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* 动画效果 */
+.animated-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* 响应式布局调整 */
+@media screen and (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid,
+    .education-content,
+    .activities-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .org-level {
+        flex-direction: column;
+    }
+
+    .org-item {
+        margin: 0.5rem 0;
+    }
+}
+
+/* 交互效果 */
+.section a {
+    color: var(--party-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.section a:hover {
+    color: var(--party-hover);
+}
+
+/* 按钮样式 */
+.btn-party {
+    background-color: var(--party-primary);
+    color: var(--party-light);
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-party:hover {
+    background-color: var(--party-hover);
+} 
